@@ -61,3 +61,7 @@ foreach ($files as $file) {
 }
 
 ```
+
+## Screenshots
+
+![alt text](https://raw.github.com/hypeJunction/elgg_dropzone/master/screenshots/dropzone.png "Dropzone")

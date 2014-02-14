@@ -26,4 +26,9 @@
 		<name>file_uploading</name>
 	</provides>
 
+	<screenshot>
+		<description>Dropzone</description>
+		<path>screenshots/dropzone.png</path>
+	</screenshot>
+
 </plugin_manifest>
