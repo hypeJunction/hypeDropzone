@@ -7,7 +7,7 @@
 	elgg.dropzone.init = function() {
 
 		elgg.dropzone.config = {
-			url: elgg.security.addToken('action/dropzone/upload'),
+			url: elgg.security.addToken(elgg.get_site_url() + 'action/dropzone/upload'),
 			method: 'POST',
 			parallelUploads: 1,
 			paramName: 'dropzone',
@@ -90,7 +90,7 @@
 			}
 		} else {
 			$(preview).addClass('elgg-dropzone-success').removeClass('elgg-dropzone-error');
-			if (data.output.success) {
+			if (data.output && data.output.success) {
 				$(preview).find('.elgg-dropzone-success-message').html(data.output.success.join('<br />'));
 			}
 			$(preview).append($(data.output.html));

@@ -16,7 +16,7 @@ if (elgg_is_xhr()) {
 	$name = get_input('input_name');
 	foreach ($uploads as $upload) {
 		if ($upload->error) {
-			register_error($uploader->error);
+			register_error($upload->error);
 			$errors[] = $upload->error;
 			continue;
 		} else {
