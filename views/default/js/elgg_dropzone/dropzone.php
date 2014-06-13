@@ -4,53 +4,79 @@
 
 	elgg.provide('elgg.dropzone');
 
+	/**
+	 * Initialize dropzone on DOM ready
+	 * @returns {void}
+	 */
 	elgg.dropzone.init = function() {
 
-		elgg.dropzone.config = {
+		// Binding a custom event, so that it's easier to initialize dropzone on ajax success
+		$('.elgg-input-dropzone').live('initialize', elgg.dropzone.initDropzone);
+
+		$('.elgg-input-dropzone').each(function() {
+			$(this).trigger('initialize');
+		});
+
+	};
+
+	/**
+	 * Configuration parameters of the dropzone instance
+	 * @param {String} hook
+	 * @param {String} type
+	 * @param {Object} params
+	 * @param {Object} config
+	 * @returns {Object}
+	 */
+	elgg.dropzone.config = function(hook, type, params, config) {
+
+		var defaults = {
 			url: elgg.security.addToken(elgg.get_site_url() + 'action/dropzone/upload'),
 			method: 'POST',
-			parallelUploads: 1,
+			headers: {
+				'X-Requested-With': 'XMLHttpRequest'
+			},
+			parallelUploads: 10,
 			paramName: 'dropzone',
-			uploadMultiple: false,
-			addRemoveLinks: false,
+			uploadMultiple: true,
 			createImageThumbnails: true,
 			thumbnailWidth: 200,
 			thumbnailHeight: 200,
 			maxFiles: 10,
-			headers: {
-				'X-Requested-With': 'XMLHttpRequest'
+			addRemoveLinks: false,
+			dictRemoveFile: "&times;",
+			previewTemplate: params.dropzone.closest('.elgg-dropzone').find('[data-template]').html(),
+			fallback: elgg.dropzone.fallback,
+			//autoProcessQueue: false,
+			init: function() {
+				if (this.options.uploadMultiple) {
+					this.on('successmultiple', elgg.dropzone.success);
+				} else {
+					this.on('success', elgg.dropzone.success);
+				}
+				this.on('removedfile', elgg.dropzone.removedfile);
 			}
-			//forceFallback: true,
+			//forceFallback: true
 		};
 
-		$('.elgg-input-dropzone').live('initialize', elgg.dropzone.initDropzone);
-
-		$('.elgg-input-dropzone')
-				.each(function() {
-					$(this).trigger('initialize');
-				});
-
+		return $.extend(true, defaults, config);
 	};
 
-
+	/**
+	 * Callback function for 'initialize' event
+	 * @param {Object} e
+	 * @returns {void}
+	 */
 	elgg.dropzone.initDropzone = function(e) {
 
 		var $input = $(this);
 
-		var dropzoneData = $input.data();
+		var params = elgg.trigger_hook('config', 'dropzone', {dropzone: $input}, $input.data());
+
+		// These will be sent as a URL query and will be available in the action
 		var queryData = {
-			'container_guid': $input.data('containerGuid'),
-			'input_name': $input.data('name')
+			container_guid: $input.data('containerGuid'),
+			input_name: $input.data('name')
 		};
-
-		var params = $.extend(true, {}, elgg.dropzone.config);
-		$.extend(true, params, dropzoneData);
-
-		params.success = elgg.dropzone.success;
-		params.error = elgg.dropzone.error;
-		params.fallback = elgg.dropzone.fallback;
-		params.previewTemplate = elgg.dropzone.previewTemplate;
-
 
 		var parts = elgg.parse_url(params.url),
 				args = {},
@@ -73,55 +99,82 @@
 		params.url = base + $.param(args);
 
 		$input.dropzone(params);
-
+		$input.live('addedfile', function(e) {
+			alert('hello');
+		});
 	};
 
+	/**
+	 * Display regular file input in case drag&drop is not supported
+	 * @returns {void}
+	 */
 	elgg.dropzone.fallback = function() {
 		$('.elgg-dropzone').hide();
 		$('[id^="dropzone-fallback"]').removeClass('hidden');
 	};
 
-	elgg.dropzone.success = function(file, data) {
-		var preview = file.previewElement;
-		if (!data || data.status < 0) {
-			$(preview).addClass('elgg-dropzone-error').removeClass('elgg-dropzone-success');
-			if (data && data.output && data.output.error) {
-				$(preview).find('.elgg-dropzone-error-message').html(data.output.error.join('<br />'));
-			}
-		} else {
-			$(preview).addClass('elgg-dropzone-success').removeClass('elgg-dropzone-error');
-			if (data.output && data.output.success) {
-				$(preview).find('.elgg-dropzone-success-message').html(data.output.success.join('<br />'));
-			}
-			$(preview).append($(data.output.html));
+	/**
+	 * Files have been successfully uploaded
+	 * @param {Array} files
+	 * @param {Object} data
+	 * @returns {void}
+	 */
+	elgg.dropzone.success = function(files, data) {
+
+		if (!$.isArray(files)) {
+			files = [files];
 		}
-		elgg.trigger_hook('upload:success', 'dropzone', {file: file, data: data});
+		console.log(data);
+		$.each(files, function(index, file) {
+			var preview = file.previewElement;
+			if (data && data.output) {
+				var filedata = data.output[index];
+				console.log(filedata);
+				if (filedata.success) {
+					$(preview).addClass('elgg-dropzone-success').removeClass('elgg-dropzone-error');
+				} else {
+					$(preview).addClass('elgg-dropzone-error').removeClass('elgg-dropzone-success');
+				}
+				if (filedata.html) {
+					$(preview).append($(filedata.html));
+				}
+				if (filedata.guid) {
+					$(preview).attr('data-guid', filedata.guid);
+				}
+				if (filedata.messages.length) {
+					if (data.output && data.output.success) {
+						$(preview).find('.elgg-dropzone-messages').html(data.output.messages.join('<br />'));
+					}
+				}
+			} else {
+				$(preview).addClass('elgg-dropzone-error').removeClass('elgg-dropzone-success');
+				$(preview).find('.elgg-dropzone-messages').html(elgg.echo('dropzone:server_side_error'));
+			}
+			elgg.trigger_hook('upload:success', 'dropzone', {file: file, data: data});
+		});
 	};
 
+	/**
+	 * Delete file entities if upload has completed
+	 * @param {Object} file
+	 * @returns {void}
+	 */
+	elgg.dropzone.removedfile = function(file) {
 
-	elgg.dropzone.error = function(file, error) {
-		// check if other plugins have other plans first
 		var preview = file.previewElement;
-		$(preview).addClass('elgg-dropzone-error').removeClass('elgg-dropzone-success');
-		$(preview).find('.elgg-dropzone-error-message').html(error);
-		elgg.trigger_hook('upload:error', 'dropzone', {file: file, error: error});
-	};
+		var guid = $(preview).data('guid');
 
-	elgg.dropzone.previewTemplate = '\
-<div class="elgg-dropzone-preview">\n\
-<div class="elgg-dropzone-size" data-dz-size></div>\n\
-<div class="elgg-dropzone-thumbnail">\n\
-<img data-dz-thumbnail />\n\
-<div class="elgg-dropzone-success-icon"></div>\n\
-<div class="elgg-dropzone-error-icon"></div>\n\
-</div>\n\
-<div class="elgg-dropzone-progress"><span class="elgg-dropzone-upload" data-dz-uploadprogress></span></div>\n\
-<div class="elgg-dropzone-success-message"><span data-dz-successmessage></span></div>\n\
-<div class="elgg-dropzone-error-message"><span data-dz-errormessage></span></div>\n\
-<div class="elgg-dropzone-filename"><span data-dz-name></span></div>\n\
-</div>';
+		if (guid) {
+			elgg.action('action/file/delete', {
+				data: {
+					guid : guid
+				}
+			});
+		}
+	};
 
 	elgg.register_hook_handler('init', 'system', elgg.dropzone.init);
+	elgg.register_hook_handler('config', 'dropzone', elgg.dropzone.config);
 
 
 <?php if (FALSE) : ?></script><?php

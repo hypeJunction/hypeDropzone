@@ -98,6 +98,8 @@ echo elgg_view('input/hidden', array(
 
 
 $file_input = elgg_view('input/file', $vars);
+$template = elgg_view('elgg_dropzone/template');
+
 echo <<<HTML
 <div class="elgg-dropzone">
 	<div $dropzone_attributes>
@@ -105,6 +107,7 @@ echo <<<HTML
 			{$language['data-dict-default-message']}
 		</span>
 	</div>
+	<div data-template>$template</div>
 </div>
 {$file_input}
 HTML;

@@ -12,7 +12,9 @@ $english = array(
 	'dropzone:file_too_big' => 'File is too big',
 	'dropzone:cancel_upload' => 'Cancel upload',
 	'dropzone:cancel_upload_confirmation' => 'Are you sure you want to cancel the upload?',
-
+	'dropzone:server_side_error' => 'Server Error',
+	'dropzone:file_not_entity' => 'File entity could not be created',
+	
 	// Upload errors
 	'upload:success' => 'File was uploaded successfully',
 	'upload:error:no_file' => 'File input was mepty',
