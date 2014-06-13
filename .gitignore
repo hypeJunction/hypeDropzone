@@ -3,7 +3,5 @@
 .htaccess
 robots.txt
 /nbproject/
-/sass/
 /.sass-cache/
 composer.lock
-config.rb

@@ -1,0 +1,175 @@
+@mixin clearfix {
+	*zoom:1;
+	&:before, &:after { content: " "; display: table; }
+	&:after { clear: both; }
+}
+
+@mixin loader($active-class: elgg-state-loading, $size: 50px) {
+	&.#{$active-class}:before {
+		display: block;
+		width: $size;
+		height: $size;
+		position: fixed;
+		top: 50%;
+		left: 0;
+		right: 0;
+		margin: -$size/2 auto 0;
+		z-index: 10000;
+		content: $fa-var-spinner;
+		color: $primary-color;
+		font-size: $size;
+		line-height: $size;
+		@include spin;
+		@include icon;
+	}
+}
+
+@mixin modal {
+	position: absolute;
+	top: 0;
+	left: 0;
+	outline: 0;
+	border: 1px solid $border-color;
+	background: #FFF;
+	padding: 0;
+	@include box-shadow(0 0 10px rgba(#000,.4));
+	@include box-sizing(border-box);
+	@include border-radius(5px);
+	font-size: 14px;
+
+	.ui-dialog-titlebar {
+		margin: 0;
+		padding: 10px;
+		background: none;
+		border: none;
+		border-bottom: 1px solid $border-color;
+		@include border-radius(0);
+		.ui-dialog-title {
+			margin: 0;
+		}
+	}
+	.ui-dialog-titlebar-close {
+		position: absolute;
+		right: 0;
+		top: 0;
+		margin: 0;
+		padding: 0;
+		border: none;
+		background: none;
+		height: 35px;
+		width: 40px;
+		display: block;
+		.ui-icon-closethick {
+			text-indent: 0;
+			position: relative;
+			@include icon;
+			background: none;
+			border: 0;
+			margin: 0 auto;
+			left: 0;
+			right: 0;
+			width: 40px;
+			height: 35px;
+			border-left: 1px solid $border-color;
+			&:after {
+				position: absolute;
+				top: 0;
+				right: 0;
+				content: $fa-var-times;
+				text-align: center;
+				font-size: 16px;
+				line-height: 35px;
+				color: darken($border-color, 8%);
+				padding: 0 12px;
+			}
+		}
+	}
+}
+
+@mixin modal-bg {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background: #000;
+	background: rgba(#000, .45);
+	top: 0;
+}
+
+@mixin icon {
+	display: inline-block;
+	font-family: FontAwesome;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+@mixin icon-spin {
+	-webkit-animation: spin 2s infinite linear;
+	-moz-animation: spin 2s infinite linear;
+	-o-animation: spin 2s infinite linear;
+	animation: spin 2s infinite linear;
+}
+
+@mixin speech-bubble($border-color: $border-color) {
+	background: #ffffff;
+	position: relative;
+	margin-left: 15px;
+	border:1px solid $border-color;
+	&:before {
+		content: " ";
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 0px;  height: 0px;  border-style: solid;
+		border-width: 0 15px 15px 0;
+		border-color: transparent $border-color transparent transparent;
+		margin-left: -16px;
+		margin-top: -1px;
+		z-index: 1;
+	}
+	&:after {
+		content: " ";
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 0px;  height: 0px;  border-style: solid;
+		border-width: 0 15px 15px 0;
+		border-color: transparent #ffffff transparent transparent;
+		margin-left: -14px;
+		margin-top: 0;
+		z-index: 5;
+	}
+}
+
+@mixin speech-bubble-alt($border-color: $border-color) {
+	background: #ffffff;
+	position: relative;
+	margin-right: 15px;
+	border:1px solid $border-color;
+	&:before {
+		content: " ";
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 0px;  height: 0px;  border-style: solid;
+		border-width: 15px 15px 0 0;
+		border-color: $border-color transparent transparent transparent;
+		margin-right: -16px;
+		margin-top: -1px;
+		z-index: 1;
+	}
+	&:after {
+		content: " ";
+		position: absolute;
+		right: 0;
+		top: 0;
+		width: 0px;  height: 0px;  border-style: solid;
+		border-width: 15px 15px 0 0;
+		border-color: #fff transparent transparent transparent;
+		margin-right: -14px;
+		margin-top: 0;
+		z-index: 5;
+	}
+}
