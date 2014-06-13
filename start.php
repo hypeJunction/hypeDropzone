@@ -13,10 +13,6 @@ namespace Elgg\Dropzone;
 
 const PLUGIN_ID = 'elgg_dropzone';
 
-if (!class_exists('hypeJunction\\Filestore\\UploadHandler')) {
-	elgg_register_class('hypeJunction\\Filestore\\UploadHandler', __DIR__ . '/classes/hypeJunction/Filestore/UploadHandler.php');
-}
-
 require_once __DIR__ . '/lib/functions.php';
 require_once __DIR__ . '/lib/hooks.php';
 
