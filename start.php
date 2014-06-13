@@ -31,6 +31,12 @@ function init() {
 	elgg_register_simplecache_view('css/elgg_dropzone/dropzone');
 	elgg_register_css('elgg.dropzone.css', elgg_get_simplecache_url('css', 'elgg_dropzone/css'));
 
+	// Load fonts
+	elgg_register_css('fonts.font-awesome', '/mod/' . PLUGIN_ID . '/vendors/fonts/font-awesome.css');
+	elgg_load_css('fonts.font-awesome');
+	elgg_register_css('fonts.open-sans', '/mod/' . PLUGIN_ID . '/vendors/fonts/open-sans.css');
+	elgg_load_css('fonts.open-sans');
+	
 	/**
 	 * Register actions
 	 */
