@@ -23,7 +23,7 @@ function init() {
 	/**
 	 * JS, CSS and Views
 	 */
-	elgg_register_js('dropzone.js', '/mod/' . PLUGIN_ID . '/vendors/dropzone-3.8.4/dropzone.min.js', 'footer');
+	elgg_register_js('dropzone.js', '/mod/' . PLUGIN_ID . '/vendors/dropzone-3.10.2/dropzone.min.js', 'footer');
 
 	elgg_register_simplecache_view('js/elgg_dropzone/dropzone');
 	elgg_register_js('elgg.dropzone.js', elgg_get_simplecache_url('js', 'elgg_dropzone/dropzone'), 'footer');
