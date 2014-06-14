@@ -2,7 +2,7 @@
 	"name": "hypejunction/elgg_dropzone",
 	"type": "elgg-plugin",
 	"repository": "hypeJunction/elgg_dropzone",
-	"description": "Rich status updates",
+	"description": "Drag&Drop File Uploads",
 	"homepage": "http://hypejunction.com",
 	"keywords": [
 		"elgg", "plugin", "upload", "drag-n-drop"
@@ -24,7 +24,8 @@
 	"require": {
 		"php": ">=5.3.3",
 		"composer/installers": ">=1.0.8",
-		"hypejunction/cmp-filestore": "1.0.*"
+		"hypejunction/cmp-filestore": "1.0.*",
+		"smottt/wideimage": "dev-master"
 	}
 }
 

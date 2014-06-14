@@ -125,12 +125,10 @@
 		if (!$.isArray(files)) {
 			files = [files];
 		}
-		console.log(data);
 		$.each(files, function(index, file) {
 			var preview = file.previewElement;
 			if (data && data.output) {
 				var filedata = data.output[index];
-				console.log(filedata);
 				if (filedata.success) {
 					$(preview).addClass('elgg-dropzone-success').removeClass('elgg-dropzone-error');
 				} else {

@@ -13,7 +13,15 @@
 			"email": "ismayil.khayredinov@gmail.com"
 		}
 	],
+	"config": {
+		"vendor-dir": "vendors"
+	},
+	"require": {
+		"smottt/wideimage": "dev-master"
+	},
 	"autoload": {
-        "psr-4": {"hypeJunction\\": "classes/"}
-    }
+		"psr-4": {
+			"hypeJunction\\": "classes/"
+		}
+	}
 }

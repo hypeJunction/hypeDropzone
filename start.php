@@ -13,6 +13,8 @@ namespace Elgg\Dropzone;
 
 const PLUGIN_ID = 'elgg_dropzone';
 
+require_once __DIR__ . '/vendors/autoload.php';
+
 require_once __DIR__ . '/lib/functions.php';
 require_once __DIR__ . '/lib/hooks.php';
 

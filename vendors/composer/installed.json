@@ -86,21 +86,55 @@
         ]
     },
     {
-        "name": "hypejunction/cmp-filestore",
-        "version": "1.0.1",
-        "version_normalized": "1.0.1.0",
+        "name": "smottt/wideimage",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
-            "url": "https://github.com/hypeJunction/cmp-filestore.git",
-            "reference": "54f00248c1cb4335a3d4285c85bb637b0a683a9e"
+            "url": "https://github.com/smottt/WideImage.git",
+            "reference": "658e6b8699255724589e8fb86959306ec64af318"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/hypeJunction/cmp-filestore/zipball/54f00248c1cb4335a3d4285c85bb637b0a683a9e",
-            "reference": "54f00248c1cb4335a3d4285c85bb637b0a683a9e",
+            "url": "https://api.github.com/repos/smottt/WideImage/zipball/658e6b8699255724589e8fb86959306ec64af318",
+            "reference": "658e6b8699255724589e8fb86959306ec64af318",
             "shasum": ""
         },
-        "time": "2014-06-13 09:40:24",
+        "time": "2014-02-10 17:56:34",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "WideImage": "lib/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0",
+            "LGPL-2.1"
+        ],
+        "description": "An open-source PHP library for image manipulation. (With namespaces, PHP 5.3+)",
+        "homepage": "http://wideimage.sourceforge.net"
+    },
+    {
+        "name": "hypejunction/cmp-filestore",
+        "version": "1.0.2",
+        "version_normalized": "1.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/hypeJunction/cmp-filestore.git",
+            "reference": "381e057e15f993426a54bc841c65c4ecc4896f61"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/hypeJunction/cmp-filestore/zipball/381e057e15f993426a54bc841c65c4ecc4896f61",
+            "reference": "381e057e15f993426a54bc841c65c4ecc4896f61",
+            "shasum": ""
+        },
+        "require": {
+            "smottt/wideimage": "dev-master"
+        },
+        "time": "2014-06-14 08:24:04",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
