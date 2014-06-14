@@ -11,6 +11,7 @@
  * @uses $vars['accept'] File types to accept
  * @uses $vars['action'] Alternative elgg action to handle temporary file uploads. Defaults to 'action/dropzone/upload'
  * @uses $vars['container_guid'] GUID of the container entity to which new files should be uploaded
+ * @uses $vars['subtype'] Subtype of the file to be created
  */
 $uid = substr(md5(microtime() . rand()), 0, 10);
 $options['id'] = "dropzone-$uid";
@@ -69,6 +70,10 @@ if (isset($vars['action'])) {
 
 if (isset($vars['container_guid'])) {
 	$options['data-container-guid'] = $vars['container_guid'];
+}
+
+if (isset($vars['subtype'])) {
+	$options['data-subtype'] = $vars['subtype'];
 }
 
 $options['data-clickable'] = '.elgg-dropzone-fallback-control,.elgg-dropzone-instructions';

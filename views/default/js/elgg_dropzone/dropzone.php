@@ -75,7 +75,8 @@
 		// These will be sent as a URL query and will be available in the action
 		var queryData = {
 			container_guid: $input.data('containerGuid'),
-			input_name: $input.data('name')
+			input_name: $input.data('name'),
+			subtype: $input.data('subtype')
 		};
 
 		var parts = elgg.parse_url(params.url),

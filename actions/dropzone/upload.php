@@ -4,8 +4,13 @@ namespace Elgg\Dropzone;
 
 use hypeJunction\Filestore\UploadHandler;
 
+$subtype = get_input('subtype');
+if (empty($subtype)) {
+	$subtype = 'file';
+}
+
 $uploads = UploadHandler::handle('dropzone', array(
-			'subtype' => 'file',
+			'subtype' => $subtype,
 			'container_guid' => get_input('container_guid'),
 			'access_id' => ACCESS_PRIVATE
 		));

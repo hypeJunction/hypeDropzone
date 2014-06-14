@@ -31,6 +31,8 @@ echo elgg_view('input/dropzone', array(
 		'accept' => "image/*",
 		'max' => 25,
 		'multiple' => true,
+		'container_guid' => $container_guid, // optional
+		'subtype' => $subtype, // subtype of the files to be created
 	));
 ```
 

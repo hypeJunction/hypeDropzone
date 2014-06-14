@@ -107,9 +107,11 @@ class UploadHandler {
 			return false;
 		}
 
-		if (!isset($config['icon_sizes'])) {
-			$icon_sizes = self::getIconSizes($entity);
+		if (isset($config['icon_sizes'])) {
+			$icon_sizes = $config['icon_sizes'];
 		}
+
+		$icon_sizes = self::getIconSizes($entity, $icon_sizes);
 
 		if (!isset($config['icon_prefix'])) {
 			$prefix = "icons/";
@@ -173,7 +175,7 @@ class UploadHandler {
 	protected static function uploadFactory($_files = array()) {
 
 		$_files = self::normalize($_files);
-		
+
 		foreach ($_files as $input => $uploads) {
 			foreach ($uploads as $upload) {
 				$object = new stdClass();
@@ -394,37 +396,48 @@ class UploadHandler {
 	/**
 	 * Get icon size config
 	 * @param ElggEntity $entity
+	 * @param array $icon_sizes An array of predefined icon sizes
 	 * @return type
 	 */
-	protected static function getIconSizes($entity = null) {
+	protected static function getIconSizes($entity = null, $icon_sizes = array()) {
 
-		if (!elgg_instanceof($entity) || $entity->getSubtype() !== 'file') {
-			return elgg_get_config('icon_sizes');
+		$subtype = elgg_extract('subtype', self::$attributes, 'file');
+
+		if ($subtype == 'file') {
+			$defaults = array(
+				'thumb' => array(
+					'w' => 60,
+					'h' => 60,
+					'square' => true,
+					'upscale' => true,
+					'metadata_name' => 'thumbnail',
+				),
+				'smallthumb' => array(
+					'w' => 153,
+					'h' => 153,
+					'square' => true,
+					'upscale' => true,
+					'metadata_name' => 'smallthumb',
+				),
+				'largethumb' => array(
+					'w' => 600,
+					'h' => 600,
+					'square' => true,
+					'upscacle' => true,
+					'metadata_name' => 'largethumb',
+				)
+			);
+		} else {
+			$defaults = elgg_get_config('icon_sizes');
 		}
 
-		return array(
-			'thumb' => array(
-				'w' => 60,
-				'h' => 60,
-				'square' => true,
-				'upscale' => true,
-				'metadata_name' => 'thumbnail',
-			),
-			'smallthumb' => array(
-				'w' => 153,
-				'h' => 153,
-				'square' => true,
-				'upscale' => true,
-				'metadata_name' => 'smallthumb',
-			),
-			'largethumb' => array(
-				'w' => 600,
-				'h' => 600,
-				'square' => true,
-				'upscacle' => true,
-				'metadata_name' => 'largethumb',
-			)
-		);
+		$icon_sizes = array_merge($defaults, $icon_sizes);
+
+		$type = (elgg_instanceof($entity)) ? $entity->getType() : 'all';
+		return elgg_trigger_plugin_hook('entity:icon:sizes', $type, array(
+			'entity' => $entity,
+			'subtype' => $subtype,
+				), $icon_sizes);
 	}
 
 }
