@@ -118,23 +118,23 @@
     },
     {
         "name": "hypejunction/cmp-filestore",
-        "version": "1.0.2",
-        "version_normalized": "1.0.2.0",
+        "version": "1.0.3",
+        "version_normalized": "1.0.3.0",
         "source": {
             "type": "git",
             "url": "https://github.com/hypeJunction/cmp-filestore.git",
-            "reference": "381e057e15f993426a54bc841c65c4ecc4896f61"
+            "reference": "f0f6b97a53211410c2a894ea64bfaff76d7684fa"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/hypeJunction/cmp-filestore/zipball/381e057e15f993426a54bc841c65c4ecc4896f61",
-            "reference": "381e057e15f993426a54bc841c65c4ecc4896f61",
+            "url": "https://api.github.com/repos/hypeJunction/cmp-filestore/zipball/f0f6b97a53211410c2a894ea64bfaff76d7684fa",
+            "reference": "f0f6b97a53211410c2a894ea64bfaff76d7684fa",
             "shasum": ""
         },
         "require": {
             "smottt/wideimage": "dev-master"
         },
-        "time": "2014-06-14 08:24:04",
+        "time": "2014-06-14 11:59:27",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

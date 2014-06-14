@@ -54,21 +54,27 @@ class IconHandler {
 
 		$img = WideImage::load($source);
 
-		foreach ($icon_sizes as $size => $thumb) {
+		$thumb_m = elgg_extract('master', $icon_sizes, array(
+			'w' => 550,
+			'h' => 550
+		));
 
-			$old_thumb = new ElggFile();
-			$old_thumb->owner_guid = $entity->owner_guid;
-			$old_thumb->setFilename("icons/" . $entity->guid . $size . ".jpg");
-			$old_thumb->open('write');
-			$old_thumb->close();
+
+		foreach ($icon_sizes as $size => $thumb) {
 
 			try {
 
-				if (is_array($coords) && in_array($size, self::$croppable)) {
-					$cropped = $img->crop($coords['x1'], $coords['y1'], $coords['x2'] - $coords['x1'], $coords['y2'] - $coords['y1']);
-					$resized = $cropped->resize($thumb['w'], $thumb['h'], 'outside', 'any')->crop('center', 'center', $thumb['w'], $thumb['h']);
+				if (is_array($coords) && (in_array($size, self::$croppable) || elgg_extract('croppable', $thumb, false))) {
+					$resized = $img->resize($thumb_m['w'], $thumb_m['h'], 'inside', 'down');
+					$resized = $resized->crop($coords['x1'], $coords['y1'], $coords['x2'] - $coords['x1'], $coords['y2'] - $coords['y1']);
+				} else {
+					$resized = $img;
+				}
+
+				if (in_array($size, self::$croppable) || elgg_extract('croppable', $thumb, false)) {
+					$resized = $resized->resize(elgg_extract('w', $thumb, null), elgg_extract('h', $thumb, null), 'outside', 'any')->crop('center', 'center', elgg_extract('w', $thumb, null), elgg_extract('h', $thumb, null));
 				} else if (!is_array($coords)) {
-					$resized = $img->resize($thumb['w'], $thumb['h'], 'inside', 'down');
+					$resized = $resized->resize(elgg_extract('w', $thumb, null), elgg_extract('h', $thumb, null), 'inside', 'down');
 				} else {
 					continue;
 				}
@@ -109,20 +115,21 @@ class IconHandler {
 				}
 			} catch (Exception $e) {
 				elgg_log($e->getMessage(), 'ERROR');
-			}
-
-			if ($new_thumb->getFilenameOnFilestore() !== $old_thumb->getFilenameOnFilestore()) {
-				$old_thumb->delete();
+				$error = true;
 			}
 		}
 
-		if (is_array('coords')) {
-			foreach ($coords as $coord => $value) {
-				$entity->$coord = $value;
+		if (!$error) {
+			if (is_array('coords')) {
+				foreach ($coords as $coord => $value) {
+					$entity->$coord = $value;
+				}
 			}
+			$entity->icontime = time();
+			return true;
 		}
 
-		$entity->icontime = time();
+		return false;
 	}
 
 	/**
