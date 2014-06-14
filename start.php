@@ -42,9 +42,5 @@ function init() {
 	 */
 	$actions_path = __DIR__ . '/actions/';
 	elgg_register_action('dropzone/upload', $actions_path . 'dropzone/upload.php');
-
-	// Making things pretty
-	elgg_extend_view('page/elements/head', 'framework/fonts/font-awesome');
-	elgg_extend_view('page/elements/head', 'framework/fonts/open-sans');
 	
 }
