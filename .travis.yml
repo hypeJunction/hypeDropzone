@@ -23,7 +23,7 @@ matrix:
        - wget https://scrutinizer-ci.com/ocular.phar
        - curl -sS https://getcomposer.org/installer | php
       script:
-       - phpcs --standard=../elgg-coding-standards/elgg.xml --warning-severity=0 --ignore=*/tests/*,*/upgrades/*,*/deprecated* ../Elgg/mod/elgg_dropzone/
+       - phpcs --standard=../elgg-coding-standards/elgg.xml --warning-severity=0 --ignore=*/tests/*,*/vendors/* ../Elgg/mod/elgg_dropzone/
        - phpunit --coverage-clover=coverage.clover
        - cd ../Elgg/mod/elgg_dropzone
        - php composer.phar validate
