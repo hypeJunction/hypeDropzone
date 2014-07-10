@@ -21,11 +21,7 @@ matrix:
        - wget https://scrutinizer-ci.com/ocular.phar
        - curl -sS https://getcomposer.org/installer | php
       script:
-       - phpcs --standard=../elgg-coding-standards/elgg.xml --warning-severity=0 --ignore=*/tests/*,*/upgrades/*,*/deprecated* engine/classes engine/lib
-       - phpunit --coverage-clover=coverage.clover
+       - phpcs --standard=../elgg-coding-standards/elgg.xml --warning-severity=0 --ignore=*/tests/* ./
        - php composer.phar validate
       after_script:
        - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
-
-script:
- - phpunit
