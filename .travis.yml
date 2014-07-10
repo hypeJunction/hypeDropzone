@@ -12,7 +12,7 @@ matrix:
     - php: 5.3
       env: VARIA=true
       before_script:
-       - git clone https://github.com/Elgg/Elgg.git ../Elgg && cd ../Elgg && cd ../Elgg
+       - git clone https://github.com/Elgg/Elgg.git ../Elgg && cd ../Elgg
        - git checkout 1.9
        - mv ../elgg_dropzone mod/elgg_dropzone
        - node -v
@@ -34,7 +34,7 @@ services:
  - mysql
 
 before_script:
- - git clone https://github.com/Elgg/Elgg.git ../Elgg && cd ../Elgg && cd ../Elgg
+ - git clone https://github.com/Elgg/Elgg.git ../Elgg && cd ../Elgg
  - git checkout 1.9
  - mv ../elgg_dropzone mod/elgg_dropzone
  - mysql -e 'create database elgg;'
