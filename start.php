@@ -25,13 +25,13 @@ function init() {
 	/**
 	 * JS, CSS and Views
 	 */
-	elgg_register_js('dropzone.js', '/mod/' . PLUGIN_ID . '/vendors/dropzone-3.10.2/dropzone.min.js', 'footer');
+	elgg_define_js('dropzone', array(
+		'src' => '/mod/' . PLUGIN_ID . '/vendors/dropzone/downloads/dropzone-amd-module.min.js',
+		'deps' => array('jquery'),
+		'exports' => 'dropzone',
+	));
 
-	elgg_register_simplecache_view('js/elgg_dropzone/dropzone');
-	elgg_register_js('elgg.dropzone.js', elgg_get_simplecache_url('js', 'elgg_dropzone/dropzone'), 'footer');
-
-	elgg_register_simplecache_view('css/elgg_dropzone/dropzone');
-	elgg_register_css('elgg.dropzone.css', elgg_get_simplecache_url('css', 'elgg_dropzone/css'));
+	elgg_extend_view('css/elgg', 'css/elgg_dropzone/stylesheet.css');
 
 	// Load fonts
 	elgg_register_css('fonts.font-awesome', '/mod/' . PLUGIN_ID . '/vendors/fonts/font-awesome.css');

@@ -12,6 +12,11 @@ Drag&Drop File Uploads for Elgg
 * Fallback to a normal file input
 * Easy to integrate into existing plugins
 
+## Versioning
+
+* Master branch is compatible with Elgg 1.9
+* Versions 3.0+ are for Elgg 1.9; anything under is for previous versions of Elgg
+
 ## Acknowledgements / Credits
 
 * Dropzone.js is a really cool library by Matias Meno
