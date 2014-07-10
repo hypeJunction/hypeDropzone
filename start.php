@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Dropzone
  *
@@ -38,11 +37,10 @@ function init() {
 	elgg_load_css('fonts.font-awesome');
 	elgg_register_css('fonts.open-sans', '/mod/' . PLUGIN_ID . '/vendors/fonts/open-sans.css');
 	elgg_load_css('fonts.open-sans');
-	
+
 	/**
 	 * Register actions
 	 */
 	$actions_path = __DIR__ . '/actions/';
 	elgg_register_action('dropzone/upload', $actions_path . 'dropzone/upload.php');
-	
 }

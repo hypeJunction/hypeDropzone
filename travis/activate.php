@@ -1,6 +1,6 @@
 <?php
 
-$enabled = getenv('TRAVIS') != '';//are we on Travis?
+$enabled = getenv('TRAVIS') != ''; //are we on Travis?
 
 if (!$enabled) {
 	echo "This script should be run only in Travis CI test environment.\n";
@@ -18,5 +18,6 @@ $admin = get_user_by_username('admin');
 login($admin);
 
 $plugin = elgg_get_plugin_from_id('elgg_dropzone');
-$plugin->activate();
-
+if ($plugin->activate()) {
+	echo "elgg_dropzone has been activated [guid = {$plugin->getGUID()}]";
+}

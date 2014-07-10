@@ -25,8 +25,7 @@ matrix:
       script:
        - phpcs --standard=../elgg-coding-standards/elgg.xml --warning-severity=0 --ignore=*../Elgg/mod/elgg_dropzone/tests/*,*./Elgg/mod/elgg_dropzone/vendors/* ../Elgg/mod/elgg_dropzone/
        - phpunit --coverage-clover=coverage.clover
-       - cd ../Elgg/mod/elgg_dropzone
-       - php composer.phar validate
+       - php composer.phar validate --verbose ../Elgg/mod/elgg_dropzone
       after_script:
        - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
 
