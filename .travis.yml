@@ -37,12 +37,12 @@ before_script:
  - mysql -e 'create database elgg;'
  - echo "USE mysql; UPDATE user SET password=PASSWORD('password') WHERE user='root'; FLUSH PRIVILEGES;" | mysql -u root
  - mkdir "${HOME}/elgg_data/"
- - php -f ./Elgg/install/cli/travis_installer.php
- - php -f ./Elgg/mod/elgg_dropzone/travis/activate.php
+ - php -f ../Elgg/install/cli/travis_installer.php
+ - php -f ../Elgg/mod/elgg_dropzone/travis/activate.php
 
 script:
  - phpunit
- - php -f ./Elgg/engine/tests/suite.php
+ - php -f ../Elgg/engine/tests/suite.php
 
 notifications:
   email: false
