@@ -1,0 +1,31 @@
+language: php
+php:
+ - 5.3
+ - 5.4
+ - 5.5
+
+branches:
+  - master
+  - elgg1.8
+
+matrix:
+  include:
+    - php: 5.3
+      env: VARIA=true
+      before_script:
+       - node -v
+       - pear install pear/PHP_CodeSniffer
+       - mkdir ../elgg-coding-standards
+       - git clone https://github.com/Elgg/elgg-coding-standards.git ../elgg-coding-standards/
+       - phpenv rehash
+       - wget https://scrutinizer-ci.com/ocular.phar
+       - curl -sS https://getcomposer.org/installer | php
+      script:
+       - phpcs --standard=../elgg-coding-standards/elgg.xml --warning-severity=0 --ignore=*/tests/*,*/upgrades/*,*/deprecated* engine/classes engine/lib
+       - phpunit --coverage-clover=coverage.clover
+       - php composer.phar validate
+      after_script:
+       - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+
+script:
+ - phpunit
