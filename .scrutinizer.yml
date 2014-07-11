@@ -26,3 +26,7 @@ tools:
     php_code_sniffer:
         config:
             ruleset: ../elgg-coding-standards/elgg.xml
+checks:
+    php:
+        code_rating: true
+        duplication: true
