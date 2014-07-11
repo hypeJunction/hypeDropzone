@@ -19,6 +19,9 @@ require_once __DIR__ . '/lib/hooks.php';
 
 elgg_register_event_handler('init', 'system', __NAMESPACE__ . '\\init');
 
+/**
+ * Initialize the plugin on system init
+ */
 function init() {
 
 	/**
