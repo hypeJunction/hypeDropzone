@@ -27,6 +27,7 @@ matrix:
        - phpunit --coverage-clover=coverage.clover
        - php composer.phar validate --verbose ../Elgg/mod/elgg_dropzone/composer.json
       after_script:
+       - cd ../Elgg/mod/elgg_dropzone
        - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
 
 services:
