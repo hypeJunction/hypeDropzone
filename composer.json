@@ -1,7 +1,6 @@
 {
 	"name": "hypejunction/elgg_dropzone",
 	"type": "elgg-plugin",
-	"repository": "hypeJunction/elgg_dropzone",
 	"description": "Drag&Drop File Uploads",
 	"homepage": "http://hypejunction.com",
 	"keywords": [
