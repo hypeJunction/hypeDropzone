@@ -21,6 +21,7 @@ elgg_register_event_handler('init', 'system', __NAMESPACE__ . '\\init');
 
 /**
  * Initialize the plugin on system init
+ * @return void
  */
 function init() {
 
