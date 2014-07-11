@@ -1,4 +1,4 @@
-Drag&Drop File Uploads for Elgg
+Drag&Drop File Uploads for Elgg ![alt text](https://travis-ci.org/hypeJunction/elgg_dropzone.svg?branch=master "Travis")
 ===============================
 
 Drag&Drop File Uploads for Elgg
