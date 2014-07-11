@@ -20,15 +20,11 @@ matrix:
        - mkdir ../elgg-coding-standards
        - git clone https://github.com/Elgg/elgg-coding-standards.git ../elgg-coding-standards/
        - phpenv rehash
-       - wget https://scrutinizer-ci.com/ocular.phar
        - curl -sS https://getcomposer.org/installer | php
       script:
        - phpcs --standard=../elgg-coding-standards/elgg.xml --warning-severity=0 --ignore=*../Elgg/mod/elgg_dropzone/tests/*,*./Elgg/mod/elgg_dropzone/vendors/* ../Elgg/mod/elgg_dropzone/
        - phpunit --coverage-clover=coverage.clover
        - php composer.phar validate --verbose ../Elgg/mod/elgg_dropzone/composer.json
-      after_script:
-       - cd ../Elgg/mod/elgg_dropzone
-       - php ocular.phar code-coverage:upload --format=php-clover coverage.clover
 
 services:
  - mysql
