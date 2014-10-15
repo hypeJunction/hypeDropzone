@@ -1,6 +1,6 @@
 # A Multi-Framework [Composer](http://getcomposer.org) Library Installer
 
-[![Build Status](https://secure.travis-ci.org/composer/installers.png)](http://travis-ci.org/composer/installers)
+[![Build Status](http://img.shields.io/travis/composer/installers.svg)](http://travis-ci.org/composer/installers)
 
 This is for PHP package authors to require in their `composer.json`. It will
 install their package to the correct location based on the specified package
@@ -35,8 +35,9 @@ is not needed to install packages with these frameworks:
 | ---------    | -----
 | AGL          | `agl-module`
 | AnnotateCms  | `annotatecms-module`<br>`annotatecms-component`<br>`annotatecms-service`
-| Bitrix       | `bitrix-module`<br>`bitrix-component`
+| Bitrix       | `bitrix-module`<br>`bitrix-component`<br>`bitrix-theme`
 | CakePHP 2+   | **`cakephp-plugin`**
+| Chef         | `chef-recipe`<br>`chef-role`
 | CodeIgniter  | `codeigniter-library`<br>`codeigniter-third-party`<br>`codeigniter-module`
 | concrete5    | `concrete5-block`<br>`concrete5-package`<br>`concrete5-theme`<br>`concrete5-update`
 | Craft        | `craft-plugin`
@@ -45,6 +46,7 @@ is not needed to install packages with these frameworks:
 | Drupal       | <b>`drupal-module`<br>`drupal-theme`</b><br>`drupal-library`<br>`drupal-profile`<br>`drupal-drush`
 | Elgg         | `elgg-plugin`
 | FuelPHP v1.x | `fuel-module`<br>`fuel-package`<br/>`fuel-theme`
+| Grav         | `grav-plugin`<br>`grav-theme`
 | Hurad        | `hurad-plugin`<br>`hurad-theme`
 | Joomla       | `joomla-component`<br>`joomla-module`<br>`joomla-template`<br>`joomla-plugin`<br>`joomla-library`
 | Kirby        | **`kirby-plugin`**
@@ -55,7 +57,7 @@ is not needed to install packages with these frameworks:
 | Mako         | `mako-package`
 | MODX Evo     | `modxevo-snippet`<br>`modxevo-plugin`<br>`modxevo-module`<br>`modxevo-template`<br>`modxevo-lib`
 | MediaWiki    | `mediawiki-extension`
-| October      | **`october-module`<br>`october-plugin`**
+| October      | **`october-module`<br>`october-plugin`<br>`october-theme`**
 | OXID         | `oxid-module`<br>`oxid-theme`<br>`oxid-out`
 | MODULEWork   | `modulework-module`
 | Moodle       | `moodle-*` (Please [check source](https://raw.githubusercontent.com/composer/installers/master/src/Composer/Installers/MoodleInstaller.php) for all supported types)
@@ -63,6 +65,7 @@ is not needed to install packages with these frameworks:
 | phpBB        | `phpbb-extension`<br>`phpbb-style`<br>`phpbb-language`
 | Pimcore      | `pimcore-plugin`
 | PPI          | **`ppi-module`**
+| Puppet       | `puppet-module`
 | REDAXO       | `redaxo-addon`
 | Roundcube    | `roundcube-plugin`
 | shopware     | `shopware-backend-plugin`<br/>`shopware-core-plugin`<br/>`shopware-frontend-plugin`<br/>`shopware-theme`

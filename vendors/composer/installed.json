@@ -1,91 +1,17 @@
 [
     {
-        "name": "smottt/wideimage",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/smottt/WideImage.git",
-            "reference": "658e6b8699255724589e8fb86959306ec64af318"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/smottt/WideImage/zipball/658e6b8699255724589e8fb86959306ec64af318",
-            "reference": "658e6b8699255724589e8fb86959306ec64af318",
-            "shasum": ""
-        },
-        "time": "2014-02-10 17:56:34",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "WideImage": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-2.0",
-            "LGPL-2.1"
-        ],
-        "description": "An open-source PHP library for image manipulation. (With namespaces, PHP 5.3+)",
-        "homepage": "http://wideimage.sourceforge.net"
-    },
-    {
-        "name": "hypejunction/cmp-filestore",
-        "version": "1.0.3",
-        "version_normalized": "1.0.3.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/hypeJunction/cmp-filestore.git",
-            "reference": "f0f6b97a53211410c2a894ea64bfaff76d7684fa"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/hypeJunction/cmp-filestore/zipball/f0f6b97a53211410c2a894ea64bfaff76d7684fa",
-            "reference": "f0f6b97a53211410c2a894ea64bfaff76d7684fa",
-            "shasum": ""
-        },
-        "require": {
-            "smottt/wideimage": "dev-master"
-        },
-        "time": "2014-06-14 11:59:27",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "hypeJunction\\": "classes/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "GPL-2.0"
-        ],
-        "authors": [
-            {
-                "name": "Ismayil Khayredinov",
-                "email": "ismayil.khayredinov@gmail.com"
-            }
-        ],
-        "description": "Filestore classes",
-        "homepage": "http://hypejunction.com",
-        "keywords": [
-            "classes",
-            "filestore"
-        ]
-    },
-    {
         "name": "composer/installers",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/composer/installers.git",
-            "reference": "020fa1983597249bfcb947b485c5aac8e0e36652"
+            "reference": "09e2192a7cd08008e273355fddd38942d8de2992"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/composer/installers/zipball/020fa1983597249bfcb947b485c5aac8e0e36652",
-            "reference": "020fa1983597249bfcb947b485c5aac8e0e36652",
+            "url": "https://api.github.com/repos/composer/installers/zipball/09e2192a7cd08008e273355fddd38942d8de2992",
+            "reference": "09e2192a7cd08008e273355fddd38942d8de2992",
             "shasum": ""
         },
         "replace": {
@@ -96,7 +22,7 @@
             "composer/composer": "1.0.*@dev",
             "phpunit/phpunit": "4.1.*"
         },
-        "time": "2014-07-09 14:29:42",
+        "time": "2014-10-15 03:40:33",
         "type": "composer-installer",
         "extra": {
             "class": "Composer\\Installers\\Installer",
@@ -118,8 +44,7 @@
             {
                 "name": "Kyle Robinson Young",
                 "email": "kyle@dontkry.com",
-                "homepage": "https://github.com/shama",
-                "role": "Developer"
+                "homepage": "https://github.com/shama"
             }
         ],
         "description": "A multi-framework Composer library installer",
@@ -130,17 +55,20 @@
             "Hurad",
             "MODX Evo",
             "OXID",
+            "Thelia",
             "WolfCMS",
             "agl",
             "annotatecms",
             "bitrix",
             "cakephp",
+            "chef",
             "codeigniter",
             "concrete5",
             "croogo",
             "drupal",
             "elgg",
             "fuelphp",
+            "grav",
             "installer",
             "joomla",
             "kohana",
@@ -154,6 +82,7 @@
             "phpbb",
             "piwik",
             "ppi",
+            "puppet",
             "roundcube",
             "shopware",
             "silverstripe",
