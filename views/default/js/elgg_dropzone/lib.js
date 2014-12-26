@@ -73,7 +73,7 @@ define(['elgg', 'jquery', 'dropzone'], function (elgg, $, dropzone) {
 			if ($input.data('elgg-dropzone')) {
 				return;
 			}
-			
+
 			var params = elgg.trigger_hook('config', 'dropzone', {dropzone: $input}, $input.data());
 
 			//These will be sent as a URL query and will be available in the action
@@ -109,7 +109,7 @@ define(['elgg', 'jquery', 'dropzone'], function (elgg, $, dropzone) {
 		 * @param {Object} e
 		 * @returns {void}
 		 */
-		resetDropzone: function(e) {
+		resetDropzone: function (e) {
 			$(this).find('.elgg-dropzone-preview').remove();
 		},
 		/**
@@ -117,16 +117,20 @@ define(['elgg', 'jquery', 'dropzone'], function (elgg, $, dropzone) {
 		 * @param {Object} e
 		 * @returns {void}
 		 */
-		initDropzoneForm: function(e) {
-			$(this).find('.elgg-input-dropzone').trigger('initialize');
+		initDropzoneForm: function (e) {
+			if ($(e.target).not('.elgg-input-dropzone')) {
+				$(this).find('.elgg-input-dropzone').trigger('initialize');
+			}
 		},
 		/**
 		 * Callback to reset dropzone on form 'reset' and 'clear' events
 		 * @param {Object} e
 		 * @returns {void}
 		 */
-		resetDropzoneForm: function(e) {
-			$(this).find('.elgg-input-dropzone').trigger('reset');
+		resetDropzoneForm: function (e) {
+			if ($(e.target).not('.elgg-input-dropzone')) {
+				$(this).find('.elgg-input-dropzone').trigger('reset');
+			}
 		},
 		/**
 		 * Display regular file input in case drag&drop is not supported
