@@ -118,7 +118,7 @@ define(['elgg', 'jquery', 'dropzone'], function (elgg, $, dropzone) {
 		 * @returns {void}
 		 */
 		initDropzoneForm: function (e) {
-			if ($(e.target).not('.elgg-input-dropzone')) {
+			if (!$(e.target).is('.elgg-input-dropzone')) {
 				$(this).find('.elgg-input-dropzone').trigger('initialize');
 			}
 		},
@@ -128,7 +128,7 @@ define(['elgg', 'jquery', 'dropzone'], function (elgg, $, dropzone) {
 		 * @returns {void}
 		 */
 		resetDropzoneForm: function (e) {
-			if ($(e.target).not('.elgg-input-dropzone')) {
+			if (!$(e.target).is('.elgg-input-dropzone')) {
 				$(this).find('.elgg-input-dropzone').trigger('reset');
 			}
 		},
