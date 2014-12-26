@@ -78,7 +78,7 @@ if (isset($vars['subtype'])) {
 	$options['data-subtype'] = $vars['subtype'];
 }
 
-$options['data-clickable'] = '.elgg-dropzone-fallback-control,.elgg-dropzone-instructions';
+$options['data-clickable'] = "#{$options['id']} .elgg-dropzone-fallback-control,#{$options['id']} .elgg-dropzone-instructions";
 
 $language = array(
 	'data-dict-default-message' => elgg_echo('dropzone:default_message'),
