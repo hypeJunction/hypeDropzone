@@ -1,19 +1,16 @@
-define(['elgg', 'jquery', 'dropzone'], function(elgg, $, dropzone) {
+define(['elgg', 'jquery', 'dropzone'], function (elgg, $, dropzone) {
 
 	var dz = {
 		/**
 		 * Initialize dropzone on DOM ready
 		 * @returns {void}
 		 */
-		init: function() {
-			
+		init: function () {
+
 			// Binding a custom event, so that it's easier to initialize dropzone on ajax success
-			$('.elgg-input-dropzone').on('initialize', dz.initDropzone);
-			$('.elgg-input-dropzone').each(function() {
-				if (!$(this).data('elgg-dropzone')) {
-					$(this).trigger('initialize');
-				}
-			});
+			$(document).on('initialize.ElggDropzone', '.elgg-input-dropzone', dz.initDropzone);
+			$('.elgg-input-dropzone').trigger('initialize');
+			
 		},
 		/**
 		 * Configuration parameters of the dropzone instance
@@ -23,7 +20,7 @@ define(['elgg', 'jquery', 'dropzone'], function(elgg, $, dropzone) {
 		 * @param {Object} config
 		 * @returns {Object}
 		 */
-		config: function(hook, type, params, config) {
+		config: function (hook, type, params, config) {
 
 			var defaults = {
 				url: elgg.security.addToken(elgg.get_site_url() + 'action/dropzone/upload'),
@@ -43,7 +40,7 @@ define(['elgg', 'jquery', 'dropzone'], function(elgg, $, dropzone) {
 				previewTemplate: params.dropzone.closest('.elgg-dropzone').find('[data-template]').html(),
 				fallback: dz.fallback,
 				//autoProcessQueue: false,
-				init: function() {
+				init: function () {
 					if (this.options.uploadMultiple) {
 						this.on('successmultiple', dz.success);
 					} else {
@@ -61,10 +58,14 @@ define(['elgg', 'jquery', 'dropzone'], function(elgg, $, dropzone) {
 		 * @param {Object} e
 		 * @returns {void}
 		 */
-		initDropzone: function(e) {
+		initDropzone: function (e) {
 
 			var $input = $(this);
 
+			if ($input.data('elgg-dropzone')) {
+				return;
+			}
+			
 			var params = elgg.trigger_hook('config', 'dropzone', {dropzone: $input}, $input.data());
 
 			//These will be sent as a URL query and will be available in the action
@@ -93,16 +94,12 @@ define(['elgg', 'jquery', 'dropzone'], function(elgg, $, dropzone) {
 			params.url = base + $.param(args);
 
 			$input.dropzone(params);
-			$input.on('addedfile', function(e) {
-				//alert('hello');
-			});
-
 			$input.data('elgg-dropzone', true);
 		},
 		/**	 * Display regular file input in case drag&drop is not supported
 		 * @returns {void}
 		 */
-		fallback: function() {
+		fallback: function () {
 			$('.elgg-dropzone').hide();
 			$('[id^="dropzone-fallback"]').removeClass('hidden');
 		},
@@ -112,12 +109,12 @@ define(['elgg', 'jquery', 'dropzone'], function(elgg, $, dropzone) {
 		 * @param {Object} data
 		 * @returns {void}
 		 */
-		success: function(files, data) {
+		success: function (files, data) {
 
 			if (!$.isArray(files)) {
 				files = [files];
 			}
-			$.each(files, function(index, file) {
+			$.each(files, function (index, file) {
 				var preview = file.previewElement;
 				if (data && data.output) {
 					var filedata = data.output[index];
@@ -149,7 +146,7 @@ define(['elgg', 'jquery', 'dropzone'], function(elgg, $, dropzone) {
 		 * @param {Object} file
 		 * @returns {void}
 		 */
-		removedfile: function(file) {
+		removedfile: function (file) {
 
 			var preview = file.previewElement;
 			var guid = $(preview).data('guid');
@@ -165,6 +162,6 @@ define(['elgg', 'jquery', 'dropzone'], function(elgg, $, dropzone) {
 	};
 
 	elgg.register_hook_handler('config', 'dropzone', dz.config);
-	
+
 	return dz;
 });
