@@ -39,7 +39,7 @@ In your action, you can retrieve uploaded files with ```get_input('upload_guids'
 You also need to implement a fallback solution for when the browser does not support
 drag and drop.
 
-You can use the UploadHandler class included with this plugin:
+You can use the UploadHandler class included with hypeFilestore:
 
 ```php
 
@@ -67,6 +67,12 @@ You can instantiate and clear dropzone by triggering jQuery events on the contai
 $('.elgg-form').trigger('initialize'); // will instantiate dropzone inputs contained within the form
 $('.elgg-form').trigger('reset'); // will clear previews and hidden guid inputs
 ```
+
+## Requirements
+
+* hypeFilestore 3.0+ https://github.com/hypeJunction/hypeFilestore
+* For icons to display as expected, install a plugin that provides FontAwesome support, or add FontAwesome to your theme
+
 
 ## Acknowledgements / Credits
 
