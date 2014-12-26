@@ -36,12 +36,6 @@ function init() {
 
 	elgg_extend_view('css/elgg', 'css/elgg_dropzone/stylesheet.css');
 
-	// Load fonts
-	elgg_register_css('fonts.font-awesome', '/mod/' . PLUGIN_ID . '/vendors/fonts/font-awesome.css');
-	elgg_load_css('fonts.font-awesome');
-	elgg_register_css('fonts.open-sans', '/mod/' . PLUGIN_ID . '/vendors/fonts/open-sans.css');
-	elgg_load_css('fonts.open-sans');
-
 	/**
 	 * Register actions
 	 */
