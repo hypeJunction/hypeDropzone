@@ -34,6 +34,7 @@ function init() {
 		'exports' => 'dropzone',
 	));
 
+	elgg_extend_view('js/elgg', 'js/elgg_dropzone/elgg.js');
 	elgg_extend_view('css/elgg', 'css/elgg_dropzone/stylesheet.css');
 
 	/**

@@ -1,5 +1,5 @@
 define(function() {
-
+	
 	var $ = require('jquery');
 
 	if ($('.elgg-dropzone').length) {

@@ -13,8 +13,6 @@
  * @uses $vars['container_guid'] GUID of the container entity to which new files should be uploaded
  * @uses $vars['subtype'] Subtype of the file to be created
  */
-elgg_require_js('elgg_dropzone/init');
-
 $uid = substr(md5(microtime() . rand()), 0, 10);
 $options['id'] = "dropzone-$uid";
 $fallback_input_id = "dropzone-fallback-$uid";
