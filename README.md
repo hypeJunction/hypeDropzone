@@ -1,10 +1,7 @@
-Drag&Drop File Uploads for Elgg ![alt text](https://travis-ci.org/hypeJunction/elgg_dropzone.svg?branch=master "Travis")
+Drag&Drop File Uploads for Elgg
 ===============================
 
 Drag&Drop File Uploads for Elgg
-
-[Buy me a vinyl!](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=P7QA9CFMENBKA)
-
 
 ## Features
 
@@ -12,23 +9,18 @@ Drag&Drop File Uploads for Elgg
 * Fallback to a normal file input
 * Easy to integrate into existing plugins
 
+![alt text](https://raw.github.com/hypeJunction/elgg_dropzone/master/screenshots/dropzone_updated.png "Dropzone")
+
 ## Versioning
 
 * Master branch is compatible with Elgg 1.9
 * Versions 3.0+ are for Elgg 1.9; anything under is for previous versions of Elgg
 
-## Acknowledgements / Credits
-
-* Dropzone.js is a really cool library by Matias Meno
-http://www.dropzonejs.com/
-
-* As always, best in kind FontAwesome
-http://fontawesome.io/
-
-
 ## Developer Notes
 
-* To add a drag&drop input to your form, add the following:
+### Adding a drag&drop file input and processing uploads
+
+To add a drag&drop input to your form, add the following:
 
 ```php
 echo elgg_view('input/dropzone', array(
@@ -36,12 +28,11 @@ echo elgg_view('input/dropzone', array(
 		'accept' => "image/*",
 		'max' => 25,
 		'multiple' => true,
-		'container_guid' => $container_guid, // optional
+		'container_guid' => $container_guid, // optional file container
 		'subtype' => $subtype, // subtype of the files to be created
+		// see the view for more options
 	));
 ```
-
-See the view and the JS file for more options.
 
 In your action, you can retrieve uploaded files with ```get_input('upload_guids');```
 
@@ -66,9 +57,18 @@ $files = $handler->makeFiles('upload_guids', array
 foreach ($files as $file) {
 	$upload_guids[] = $file->guid;
 }
-
 ```
 
-## Screenshots
+### Initializing and resetting dropzone
 
-![alt text](https://raw.github.com/hypeJunction/elgg_dropzone/master/screenshots/dropzone_updated.png "Dropzone")
+You can instantiate and clear dropzone by triggering jQuery events on the containing form:
+
+```js
+$('.elgg-form').trigger('initialize'); // will instantiate dropzone inputs contained within the form
+$('.elgg-form').trigger('reset'); // will clear previews and hidden guid inputs
+```
+
+## Acknowledgements / Credits
+
+* Dropzone.js is a really cool library by Matias Meno
+http://www.dropzonejs.com/
