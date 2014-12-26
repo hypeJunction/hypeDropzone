@@ -7,10 +7,18 @@ define(['elgg', 'jquery', 'dropzone'], function (elgg, $, dropzone) {
 		 */
 		init: function () {
 
-			// Binding a custom event, so that it's easier to initialize dropzone on ajax success
-			$(document).on('initialize.ElggDropzone', '.elgg-input-dropzone', dz.initDropzone);
+			var init = 'initialize.dropzone init.dropzone ready.dropzone';
+			var reset = 'reset.dropzone clear.dropzone';
+
+			$(document).off('.dropzone');
+
+			$(document).on(init, '.elgg-input-dropzone', dz.initDropzone);
+			$(document).on(reset, '.elgg-input-dropzone', dz.resetDropzone);
+
+			$(document).on(init, 'form:has(.elgg-input-dropzone)', dz.initDropzoneForm);
+			$(document).on(reset, 'form:has(.elgg-input-dropzone)', dz.resetDropzoneForm);
+
 			$('.elgg-input-dropzone').trigger('initialize');
-			
 		},
 		/**
 		 * Configuration parameters of the dropzone instance
@@ -54,7 +62,7 @@ define(['elgg', 'jquery', 'dropzone'], function (elgg, $, dropzone) {
 			return $.extend(true, defaults, config);
 		},
 		/**
-		 * Callback function for 'initialize' event
+		 * Callback function for 'initialize', 'init', 'ready' event
 		 * @param {Object} e
 		 * @returns {void}
 		 */
@@ -96,7 +104,32 @@ define(['elgg', 'jquery', 'dropzone'], function (elgg, $, dropzone) {
 			$input.dropzone(params);
 			$input.data('elgg-dropzone', true);
 		},
-		/**	 * Display regular file input in case drag&drop is not supported
+		/**
+		 * Callback function for 'reset' event
+		 * @param {Object} e
+		 * @returns {void}
+		 */
+		resetDropzone: function(e) {
+			$(this).find('.elgg-dropzone-preview').remove();
+		},
+		/**
+		 * Callback to initialize dropzone on form 'initialize' and 'ready' events
+		 * @param {Object} e
+		 * @returns {void}
+		 */
+		initDropzoneForm: function(e) {
+			$(this).find('.elgg-input-dropzone').trigger('initialize');
+		},
+		/**
+		 * Callback to reset dropzone on form 'reset' and 'clear' events
+		 * @param {Object} e
+		 * @returns {void}
+		 */
+		resetDropzoneForm: function(e) {
+			$(this).find('.elgg-input-dropzone').trigger('reset');
+		},
+		/**
+		 * Display regular file input in case drag&drop is not supported
 		 * @returns {void}
 		 */
 		fallback: function () {
