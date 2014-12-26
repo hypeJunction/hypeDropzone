@@ -1,10 +1,8 @@
 @import "compass/css3"; // compass css3 helpers
-
-@import "font-awesome/variables";
-@import "font-awesome/mixins";
-
+@import "../../../../sass/global/variables";
 @import "variables";
-@import "mixins";
+
+$prefix: 'elgg-dropzone';
 
 @-webkit-keyframes move {
 	0% {
@@ -15,11 +13,13 @@
 	}
 }
 
-.elgg-dropzone {
-	* {
+[class~=#{$prefix}] {
+	&, & * {
 		@include box-sizing(border-box);
-		font-family: 'Open Sans', 'sans-serif';
 	}
+}
+
+.#{$prefix} {
 	[data-template] {
 		display: none;
 		visibility: hidden;
@@ -29,7 +29,8 @@
 		min-height: 100px;
 		padding: 1px;
 		border: 1px solid $border-color;
-		.elgg-dropzone-instructions {
+		@include border-radius($global-radius);
+		.#{$prefix}-instructions {
 			cursor: pointer;
 			font-size: 16px;
 			text-align: center;
@@ -62,10 +63,10 @@
 		}
 	}
 
-	.elgg-dropzone-preview {
+	.#{$prefix}-preview {
 		@include clearfix;
 		border-bottom: 1px solid $border-color;
-		.elgg-dropzone-instructions + & {
+		.#{$prefix}-instructions + & {
 			border-top: 1px solid $border-color;
 			margin-top: 10px;
 		}
@@ -73,10 +74,10 @@
 			margin-bottom: 10px;
 		}
 		&:nth-child(odd) {
-			background: lighten($border-color, 20%);
+			background: $lighter-bg-color;
 		}
 		&:nth-child(even) {
-			background: lighten($border-color, 15%);
+			background: $light-bg-color;
 		}
 		display: block;
 		vertical-align: middle;
@@ -85,22 +86,19 @@
 		padding: 2px;
 		position: relative;
 		padding: 10px 10px 10px 15px;
-		.elgg-dropzone-filename {
+		.#{$prefix}-filename {
 			font-size: 12px;
 			text-align: left;
 			line-height: 30px;
-			white-space: nowrap;
 			overflow: hidden;
 		}
-		.elgg-dropzone-size {
+		.#{$prefix}-size {
 			font-size: 10px;
 			text-align: center;
-			font-size: lighten($primary-color, 15%);
 			line-height: 30px;
-			white-space: nowrap;
 			overflow: hidden;
 		}
-		.elgg-dropzone-thumbnail {
+		.#{$prefix}-thumbnail {
 			text-align: center;
 			padding: 0;
 			max-height: 30px;
@@ -114,7 +112,16 @@
 				display: inline-block;
 			}
 		}
-		.elgg-dropzone-progress {
+		@media #{$small-only} {
+			.#{$prefix}-size, .#{$prefix}-thumbnail {
+				display: none;
+			}
+			.#{$prefix}-filename {
+				padding: 0;
+				width: 85%;
+			}
+		}
+		.#{$prefix}-progress {
 			position: absolute;
 			bottom: 0;
 			left: 0;
@@ -122,21 +129,21 @@
 			height: 4px;
 			border-bottom:1px solid #fff;
 		}
-		.elgg-dropzone-upload {
+		.#{$prefix}-upload {
 			position: absolute;
 			background-color: $primary-color;
 			background-image: -webkit-gradient(
-			linear,
-			left bottom,
-			left top,
-			color-stop(0, $primary-color),
-			color-stop(1, lighten($primary-color, 15%))
-			);
+				linear,
+				left bottom,
+				left top,
+				color-stop(0, $primary-color),
+				color-stop(1, lighten($primary-color, 15%))
+				);
 			background-image: -moz-linear-gradient(
-			center bottom,
-			rgb(43,194,83) 37%,
-			rgb(84,240,84) 69%
-			);
+				center bottom,
+				rgb(43,194,83) 37%,
+				rgb(84,240,84) 69%
+				);
 			overflow: hidden;
 			left: 0;
 			top: 0;
@@ -149,24 +156,24 @@
 				top: 0; left: 0; bottom: 0; right: 0;
 				height: 100%;
 				background-image:
-				-webkit-gradient(linear, 0 0, 100% 100%,
-				color-stop(.25, rgba(255, 255, 255, .2)),
-				color-stop(.25, transparent), color-stop(.5, transparent),
-				color-stop(.5, rgba(255, 255, 255, .2)),
-				color-stop(.75, rgba(255, 255, 255, .2)),
-				color-stop(.75, transparent), to(transparent)
-				);
+					-webkit-gradient(linear, 0 0, 100% 100%,
+					color-stop(.25, rgba(255, 255, 255, .2)),
+					color-stop(.25, transparent), color-stop(.5, transparent),
+					color-stop(.5, rgba(255, 255, 255, .2)),
+					color-stop(.75, rgba(255, 255, 255, .2)),
+					color-stop(.75, transparent), to(transparent)
+					);
 				background-image:
-				-moz-linear-gradient(
-				-45deg,
-				rgba(255, 255, 255, .2) 25%,
-				transparent 25%,
-				transparent 50%,
-				rgba(255, 255, 255, .2) 50%,
-				rgba(255, 255, 255, .2) 75%,
-				transparent 75%,
-				transparent
-				);
+					-moz-linear-gradient(
+					-45deg,
+					rgba(255, 255, 255, .2) 25%,
+					transparent 25%,
+					transparent 50%,
+					rgba(255, 255, 255, .2) 50%,
+					rgba(255, 255, 255, .2) 75%,
+					transparent 75%,
+					transparent
+					);
 				z-index: 1;
 				-webkit-background-size: 25px 25px;
 				-moz-background-size: 25px 25px;
@@ -174,7 +181,7 @@
 				overflow: hidden;
 			}
 		}
-		.elgg-dropzone-success-icon {
+		.#{$prefix}-success-icon {
 			@include icon;
 			display: none;
 			margin: 0 5px;
@@ -185,7 +192,7 @@
 				content: $fa-var-check;
 			}
 		}
-		.elgg-dropzone-error-icon {
+		.#{$prefix}-error-icon {
 			@include icon;
 			display: none;
 			width: 100%;
@@ -193,12 +200,12 @@
 			font-size: 16px;
 			line-height: 30px;
 			margin: 0 5px;
-			color: $error-color;
+			color: $alert-color;
 			&:before {
 				content: $fa-var-ban;
 			}
 		}
-		.elgg-dropzone-remove-icon {
+		.#{$prefix}-remove-icon {
 			@include icon;
 			width: 100%;
 			height: 100%;
@@ -206,7 +213,7 @@
 			font-size: 16px;
 			line-height: 30px;
 			cursor: pointer;
-			color: $error-color;
+			color: $alert-color;
 			&:before {
 				content: $fa-var-times;
 			}
@@ -215,19 +222,19 @@
 			}
 		}
 
-		.elgg-dropzone-messages {
+		.#{$prefix}-messages {
 			font-size: 10px;
 			color: $primary-color;
 		}
 
-		&.elgg-dropzone-success {
-			.elgg-dropzone-success-icon {
+		&.#{$prefix}-success {
+			.#{$prefix}-success-icon {
 				display: inline-block;
 			}
-			.elgg-dropzone-progress {
+			.#{$prefix}-progress {
 				width: 100%;
 				opacity: 0.5;
-				.elgg-dropzone-upload {
+				.#{$prefix}-upload {
 					&:after {
 						display: none;
 					}
@@ -235,18 +242,18 @@
 			}
 		}
 
-		&.elgg-dropzone-error {
-			.elgg-dropzone-error-icon {
+		&.#{$prefix}-error {
+			.#{$prefix}-error-icon {
 				display: inline-block;
 			}
-			.elgg-dropzone-messages {
-				color: $error-color;
+			.#{$prefix}-messages {
+				color: $alert-color;
 			}
-			.elgg-dropzone-progress {
+			.#{$prefix}-progress {
 				width: 100%;
 				opacity: 0.5;
-				.elgg-dropzone-upload {
-					background: $error-color;
+				.#{$prefix}-upload {
+					background: $alert-color;
 					&:after {
 						display: none;
 					}
@@ -256,16 +263,4 @@
 	}
 }
 
-$grid : (12);
-$cols : (1,2,3,4,5,6,7,8,9,10,11,12);
-@each $total in $grid {
-	@each $width in $cols {
-		@if $total >= $width {
-			.elgg-dropzone-col-#{$width}of#{$total} {
-				@include elgg-col($columns: $width, $total-columns: $total);
-				padding: 0 8px;
-				margin-bottom: 0;
-			}
-		}
-	}
-}
+@include grid($prefix, (12), (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12), 0);
