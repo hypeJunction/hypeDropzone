@@ -5,8 +5,8 @@ require(['jquery', 'elgg'], function ($) {
 		});
 	}
 
-	$(document).ajaxSuccess(function (data) {
-		if ($(data).has('.elgg-dropzone')) {
+	$(document).ajaxSuccess(function (event, response, settings) {
+		if ($(data.responseText).has('.elgg-dropzone')) {
 			require(['elgg_dropzone/lib'], function (dz) {
 				dz.init();
 			});
