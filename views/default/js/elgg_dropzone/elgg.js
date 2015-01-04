@@ -6,7 +6,13 @@ require(['jquery', 'elgg'], function ($) {
 	}
 
 	$(document).ajaxSuccess(function (event, response, settings) {
-		if ($(data.responseText).has('.elgg-dropzone')) {
+		var data = '';
+		if (settings.dataType === 'json') {
+			data = $.parseJSON(response.responseText);
+		} else if (settings.dataType === 'html') {
+			data = response.resopnseText;
+		}
+		if ($(data).has('.elgg-dropzone')) {
 			require(['elgg_dropzone/lib'], function (dz) {
 				dz.init();
 			});
