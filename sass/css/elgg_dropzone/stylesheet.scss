@@ -1,8 +1,6 @@
 @import "compass/css3"; // compass css3 helpers
-@import "../../../../sass/global/variables";
+@import "../../../../../sass/global/variables";
 @import "variables";
-
-$prefix: 'elgg-dropzone';
 
 @-webkit-keyframes move {
 	0% {
@@ -13,13 +11,13 @@ $prefix: 'elgg-dropzone';
 	}
 }
 
-[class~=#{$prefix}] {
+[class~="elgg-dropzone"] {
 	&, & * {
 		@include box-sizing(border-box);
 	}
 }
 
-.#{$prefix} {
+.elgg-dropzone {
 	[data-template] {
 		display: none;
 		visibility: hidden;
@@ -30,7 +28,7 @@ $prefix: 'elgg-dropzone';
 		padding: 1px;
 		border: 1px solid $border-color;
 		@include border-radius($global-radius);
-		.#{$prefix}-instructions {
+		.elgg-dropzone-instructions {
 			cursor: pointer;
 			font-size: 16px;
 			text-align: center;
@@ -63,10 +61,10 @@ $prefix: 'elgg-dropzone';
 		}
 	}
 
-	.#{$prefix}-preview {
+	.elgg-dropzone-preview {
 		@include clearfix;
 		border-bottom: 1px solid $border-color;
-		.#{$prefix}-instructions + & {
+		.elgg-dropzone-instructions + & {
 			border-top: 1px solid $border-color;
 			margin-top: 10px;
 		}
@@ -86,19 +84,19 @@ $prefix: 'elgg-dropzone';
 		padding: 2px;
 		position: relative;
 		padding: 10px 10px 10px 15px;
-		.#{$prefix}-filename {
+		.elgg-dropzone-filename {
 			font-size: 12px;
 			text-align: left;
 			line-height: 30px;
 			overflow: hidden;
 		}
-		.#{$prefix}-size {
+		.elgg-dropzone-size {
 			font-size: 10px;
 			text-align: center;
 			line-height: 30px;
 			overflow: hidden;
 		}
-		.#{$prefix}-thumbnail {
+		.elgg-dropzone-thumbnail {
 			text-align: center;
 			padding: 0;
 			max-height: 30px;
@@ -113,15 +111,15 @@ $prefix: 'elgg-dropzone';
 			}
 		}
 		@media #{$small-only} {
-			.#{$prefix}-size, .#{$prefix}-thumbnail {
+			.elgg-dropzone-size, .elgg-dropzone-thumbnail {
 				display: none;
 			}
-			.#{$prefix}-filename {
+			.elgg-dropzone-filename {
 				padding: 0;
 				width: 85%;
 			}
 		}
-		.#{$prefix}-progress {
+		.elgg-dropzone-progress {
 			position: absolute;
 			bottom: 0;
 			left: 0;
@@ -129,7 +127,7 @@ $prefix: 'elgg-dropzone';
 			height: 4px;
 			border-bottom:1px solid #fff;
 		}
-		.#{$prefix}-upload {
+		.elgg-dropzone-upload {
 			position: absolute;
 			background-color: $primary-color;
 			background-image: -webkit-gradient(
@@ -181,7 +179,7 @@ $prefix: 'elgg-dropzone';
 				overflow: hidden;
 			}
 		}
-		.#{$prefix}-success-icon {
+		.elgg-dropzone-success-icon {
 			@include icon;
 			display: none;
 			margin: 0 5px;
@@ -192,7 +190,7 @@ $prefix: 'elgg-dropzone';
 				content: $fa-var-check;
 			}
 		}
-		.#{$prefix}-error-icon {
+		.elgg-dropzone-error-icon {
 			@include icon;
 			display: none;
 			width: 100%;
@@ -205,7 +203,7 @@ $prefix: 'elgg-dropzone';
 				content: $fa-var-ban;
 			}
 		}
-		.#{$prefix}-remove-icon {
+		.elgg-dropzone-remove-icon {
 			@include icon;
 			width: 100%;
 			height: 100%;
@@ -222,19 +220,19 @@ $prefix: 'elgg-dropzone';
 			}
 		}
 
-		.#{$prefix}-messages {
+		.elgg-dropzone-messages {
 			font-size: 10px;
 			color: $primary-color;
 		}
 
-		&.#{$prefix}-success {
-			.#{$prefix}-success-icon {
+		&.elgg-dropzone-success {
+			.elgg-dropzone-success-icon {
 				display: inline-block;
 			}
-			.#{$prefix}-progress {
+			.elgg-dropzone-progress {
 				width: 100%;
 				opacity: 0.5;
-				.#{$prefix}-upload {
+				.elgg-dropzone-upload {
 					&:after {
 						display: none;
 					}
@@ -242,17 +240,17 @@ $prefix: 'elgg-dropzone';
 			}
 		}
 
-		&.#{$prefix}-error {
-			.#{$prefix}-error-icon {
+		&.elgg-dropzone-error {
+			.elgg-dropzone-error-icon {
 				display: inline-block;
 			}
-			.#{$prefix}-messages {
+			.elgg-dropzone-messages {
 				color: $alert-color;
 			}
-			.#{$prefix}-progress {
+			.elgg-dropzone-progress {
 				width: 100%;
 				opacity: 0.5;
-				.#{$prefix}-upload {
+				.elgg-dropzone-upload {
 					background: $alert-color;
 					&:after {
 						display: none;
@@ -263,4 +261,4 @@ $prefix: 'elgg-dropzone';
 	}
 }
 
-@include grid($prefix, (12), (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12), 0);
+@include grid('elgg-dropzone', (12), (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12), 0);
