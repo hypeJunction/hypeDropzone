@@ -6,29 +6,15 @@
 	"keywords": [
 		"elgg", "plugin", "upload", "drag-n-drop"
 	],
-	"minimum-stability" : "dev",
 	"license": "GPL-2.0",
-	"repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/smottt/wideimage"
-        }
-    ],
 	"authors": [
 		{
 			"name": "Ismayil Khayredinov",
 			"email": "ismayil.khayredinov@gmail.com"
 		}
 	],
-	"extra": {
-		"installer-name": "elgg_dropzone"
-	},
-	"config": {
-		"vendor-dir": "vendors",
-		"preferred-install": "dist"
-	},
 	"require": {
-		"php": ">=5.3.3",
+		"php": ">=5.4",
 		"composer/installers": "1.0.*"
 	}
 }
