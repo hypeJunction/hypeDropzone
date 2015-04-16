@@ -45,7 +45,7 @@ define(['elgg', 'jquery', 'dropzone'], function (elgg, $, dropzone) {
 				maxFiles: 10,
 				addRemoveLinks: false,
 				dictRemoveFile: "&times;",
-				previewTemplate: params.dropzone.closest('.elgg-dropzone').find('[data-template]').html(),
+				previewTemplate: params.dropzone.closest('.elgg-dropzone').find('[data-template]').children()[0].outerHTML,
 				fallback: dz.fallback,
 				//autoProcessQueue: false,
 				init: function () {

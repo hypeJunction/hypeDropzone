@@ -2,34 +2,22 @@
 /**
  * Dropzone
  *
- * @package Elgg
- * @subpackage Dropzone
- *
  * @author Ismayil Khayredinov <ismayil.khayredinov@gmail.com>
  */
 
-namespace Elgg\Dropzone;
-
-const PLUGIN_ID = 'elgg_dropzone';
-
-require_once __DIR__ . '/vendors/autoload.php';
-
-require_once __DIR__ . '/lib/functions.php';
-require_once __DIR__ . '/lib/hooks.php';
-
-elgg_register_event_handler('init', 'system', __NAMESPACE__ . '\\init');
+elgg_register_event_handler('init', 'system', 'elgg_dropzone_init');
 
 /**
  * Initialize the plugin on system init
  * @return void
  */
-function init() {
+function elgg_dropzone_init() {
 
 	/**
 	 * JS, CSS and Views
 	 */
 	elgg_define_js('dropzone', array(
-		'src' => '/mod/' . PLUGIN_ID . '/vendors/dropzone/downloads/dropzone-amd-module.min.js',
+		'src' => '/mod/elgg_dropzone/vendors/dropzone/dropzone-amd-module.min.js',
 		'deps' => array('jquery'),
 		'exports' => 'dropzone',
 	));

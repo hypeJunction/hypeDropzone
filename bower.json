@@ -1,7 +1,0 @@
-{
-	"name": "elgg_dropzone",
-	"version": "3.0.0",
-	"dependencies": {
-		"dropzone" : "3.10.*"
-	}
-}
