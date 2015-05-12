@@ -1,0 +1,264 @@
+@import "compass/css3"; // compass css3 helpers
+@import "../../../../../sass/global/variables";
+@import "variables";
+
+@-webkit-keyframes move {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: 50px 50px;
+	}
+}
+
+[class~="elgg-dropzone"] {
+	&, & * {
+		@include box-sizing(border-box);
+	}
+}
+
+.elgg-dropzone {
+	[data-template] {
+		display: none;
+		visibility: hidden;
+	}
+	.elgg-input-dropzone {
+		position: relative;
+		min-height: 100px;
+		padding: 1px;
+		border: 1px solid $border-color;
+		@include border-radius($global-radius);
+		.elgg-dropzone-instructions {
+			cursor: pointer;
+			font-size: 16px;
+			text-align: center;
+			display: block;
+			padding: 20px;
+			padding-top: 70px;
+			* {
+				text-align: center;
+			}
+			strong, span {
+				line-height: 20px;
+				color: $border-color;
+			}
+			&:before {
+				cursor: pointer;
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				width: 100%;
+				font-size: 50px;
+				@include icon;
+				content: $fa-var-cloud-upload;
+				color: $border-color;
+				margin: 0 auto;
+				line-height: 50px;
+				padding: 20px 0;
+				z-index: 1;
+			}
+		}
+	}
+
+	.elgg-dropzone-preview {
+		@include clearfix;
+		border-bottom: 1px solid $border-color;
+		.elgg-dropzone-instructions + & {
+			border-top: 1px solid $border-color;
+			margin-top: 10px;
+		}
+		&:last-child {
+			margin-bottom: 10px;
+		}
+		&:nth-child(odd) {
+			background: $lighter-bg-color;
+		}
+		&:nth-child(even) {
+			background: $light-bg-color;
+		}
+		display: block;
+		vertical-align: middle;
+		width: 100%;
+		border: 0;
+		padding: 2px;
+		position: relative;
+		padding: 10px 10px 10px 15px;
+		.elgg-dropzone-filename {
+			font-size: 12px;
+			text-align: left;
+			line-height: 30px;
+			overflow: hidden;
+		}
+		.elgg-dropzone-size {
+			font-size: 10px;
+			text-align: center;
+			line-height: 30px;
+			overflow: hidden;
+		}
+		.elgg-dropzone-thumbnail {
+			text-align: center;
+			padding: 0;
+			max-height: 30px;
+			overflow: hidden;
+			vertical-align: middle;
+			img {
+				width: 100%;
+				height: auto;
+				max-width: 30px;
+				line-height: 30px;
+				display: inline-block;
+			}
+		}
+		@media #{$small-only} {
+			.elgg-dropzone-size, .elgg-dropzone-thumbnail {
+				display: none;
+			}
+			.elgg-dropzone-filename {
+				padding: 0;
+				width: 85%;
+			}
+		}
+		.elgg-dropzone-progress {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 90%;
+			height: 4px;
+			border-bottom:1px solid #fff;
+		}
+		.elgg-dropzone-upload {
+			position: absolute;
+			background-color: $primary-color;
+			background-image: -webkit-gradient(
+				linear,
+				left bottom,
+				left top,
+				color-stop(0, $primary-color),
+				color-stop(1, lighten($primary-color, 15%))
+				);
+			background-image: -moz-linear-gradient(
+				center bottom,
+				rgb(43,194,83) 37%,
+				rgb(84,240,84) 69%
+				);
+			overflow: hidden;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			width: 1%;
+			&:after {
+				content: "";
+				position: absolute;
+				top: 0; left: 0; bottom: 0; right: 0;
+				height: 100%;
+				background-image:
+					-webkit-gradient(linear, 0 0, 100% 100%,
+					color-stop(.25, rgba(255, 255, 255, .2)),
+					color-stop(.25, transparent), color-stop(.5, transparent),
+					color-stop(.5, rgba(255, 255, 255, .2)),
+					color-stop(.75, rgba(255, 255, 255, .2)),
+					color-stop(.75, transparent), to(transparent)
+					);
+				background-image:
+					-moz-linear-gradient(
+					-45deg,
+					rgba(255, 255, 255, .2) 25%,
+					transparent 25%,
+					transparent 50%,
+					rgba(255, 255, 255, .2) 50%,
+					rgba(255, 255, 255, .2) 75%,
+					transparent 75%,
+					transparent
+					);
+				z-index: 1;
+				-webkit-background-size: 25px 25px;
+				-moz-background-size: 25px 25px;
+				-webkit-animation: move 2s linear infinite;
+				overflow: hidden;
+			}
+		}
+		.elgg-dropzone-success-icon {
+			@include icon;
+			display: none;
+			margin: 0 5px;
+			font-size: 16px;
+			line-height: 30px;
+			color: $primary-color;
+			&:before {
+				content: $fa-var-check;
+			}
+		}
+		.elgg-dropzone-error-icon {
+			@include icon;
+			display: none;
+			width: 100%;
+			height: 100%;
+			font-size: 16px;
+			line-height: 30px;
+			margin: 0 5px;
+			color: $alert-color;
+			&:before {
+				content: $fa-var-ban;
+			}
+		}
+		.elgg-dropzone-remove-icon {
+			@include icon;
+			width: 100%;
+			height: 100%;
+			margin: 0 5px;
+			font-size: 16px;
+			line-height: 30px;
+			cursor: pointer;
+			color: $alert-color;
+			&:before {
+				content: $fa-var-times;
+			}
+			&:hover {
+				text-decoration: none;
+			}
+		}
+
+		.elgg-dropzone-messages {
+			font-size: 10px;
+			color: $primary-color;
+		}
+
+		&.elgg-dropzone-success {
+			.elgg-dropzone-success-icon {
+				display: inline-block;
+			}
+			.elgg-dropzone-progress {
+				width: 100%;
+				opacity: 0.5;
+				.elgg-dropzone-upload {
+					&:after {
+						display: none;
+					}
+				}
+			}
+		}
+
+		&.elgg-dropzone-error {
+			.elgg-dropzone-error-icon {
+				display: inline-block;
+			}
+			.elgg-dropzone-messages {
+				color: $alert-color;
+			}
+			.elgg-dropzone-progress {
+				width: 100%;
+				opacity: 0.5;
+				.elgg-dropzone-upload {
+					background: $alert-color;
+					&:after {
+						display: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+@include grid('elgg-dropzone', (12), (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12), 0);
