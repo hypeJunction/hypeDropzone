@@ -15,11 +15,6 @@ Drag&Drop File Uploads for Elgg
 
 ![Dropzone](https://raw.github.com/hypeJunction/hypeDropzone/master/screenshots/dropzone_updated.png "Dropzone")
 
-## Versioning
-
-* Master branch is compatible with Elgg 1.9
-* Versions 3.0+ are for Elgg 1.9; anything under is for previous versions of Elgg
-
 ## Developer Notes
 
 ### Adding a drag&drop file input and processing uploads
@@ -74,7 +69,6 @@ $('.elgg-form').trigger('reset'); // will clear previews and hidden guid inputs
 
 ## Requirements
 
-* hypeFilestore 3.0+ https://github.com/hypeJunction/hypeFilestore
 * For icons to display as expected, install a plugin that provides FontAwesome support, or add FontAwesome to your theme
 
 
