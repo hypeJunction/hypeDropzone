@@ -8,7 +8,7 @@ namespace hypeJunction\Dropzone;
  */
 final class Plugin extends \hypeJunction\Plugin {
 
-	static $singleton;
+	static $instance;
 
 	protected function __construct(\ElggPlugin $plugin) {
 
@@ -19,12 +19,12 @@ final class Plugin extends \hypeJunction\Plugin {
 		});
 	}
 
-	public static function factory($id) {
-		if (null === self::$singleton) {
-			$plugin = elgg_get_plugin_from_id($id);
-			self::$singleton = new self($plugin);
+	public static function factory() {
+		if (null === self::$instance) {
+			$plugin = elgg_get_plugin_from_id('hypeDropzone');
+			self::$instance = new self($plugin);
 		}
-		return self::$singleton;
+		return self::$instance;
 	}
 
 	public function boot() {
@@ -54,9 +54,4 @@ final class Plugin extends \hypeJunction\Plugin {
 			elgg_register_js('dropzone', elgg_get_simplecache_url('js', 'dropzone/legacy/dropzone'));
 		}
 	}
-
-	public function deactivate() {
-		$this->plugin->deactivate();
-	}
-
 }

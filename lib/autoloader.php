@@ -17,5 +17,5 @@ require_once "{$path}vendor/autoload.php";
  * @return \hypeJunction\Dropzone\Plugin
  */
 function hypeDropzone() {
-	return \hypeJunction\Dropzone\Plugin::factory('hypeDropzone');
+	return \hypeJunction\Dropzone\Plugin::factory();
 }
