@@ -43,17 +43,17 @@ You can use the hypeApps()->uploader:
 
 $upload_guids = get_input('upload_guids', array()):
 
-$files = hypeApps()->uploader->handle('upload_guids', array
+$uploads = hypeApps()->uploader->handle('upload_guids', array
 			'subtype' => 'file',
 			'container_guid' => get_input('container_guid'),
 			'access_id' => ACCESS_PRIVATE
 		));
 
-if (!empty($files)) {
-	foreach ($files as $file) {
+if (!empty($uploads)) {
+	foreach ($uploads as $upload) {
 		$entity = $upload->file;
-		if ($file instanceof \ElggEntity) {
-			$upload_guids[] = $file->guid;
+		if ($entity instanceof \ElggEntity) {
+			$upload_guids[] = $entity->guid;
 		}
 	}
 }
