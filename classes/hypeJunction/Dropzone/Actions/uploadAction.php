@@ -4,7 +4,7 @@ namespace hypeJunction\Dropzone\Actions;
 
 /**
  * @property string        $subtype
- * @property string        $name
+ * @property string        $input_name
  * @property int           $container_guid
  * @property \ElggEntity[] $uploads
  */
@@ -54,7 +54,7 @@ class uploadAction extends \hypeJunction\Controllers\Action {
 				} else {
 					$guid = $file->getGUID();
 					$html = elgg_view('input/hidden', array(
-						'name' => $this->name,
+						'name' => $this->input_name,
 						'value' => $file->getGUID()
 					));
 				}
