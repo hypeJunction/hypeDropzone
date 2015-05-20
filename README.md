@@ -13,7 +13,7 @@ Drag&Drop File Uploads for Elgg
 * Fallback to a normal file input
 * Easy to integrate into existing plugins
 
-![alt text](https://raw.github.com/hypeJunction/dropzone/master/screenshots/dropzone_updated.png "Dropzone")
+![Dropzone](https://raw.github.com/hypeJunction/hypeDropzone/master/screenshots/dropzone_updated.png "Dropzone")
 
 ## Versioning
 
