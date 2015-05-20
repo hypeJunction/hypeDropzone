@@ -1,5 +1,9 @@
 Drag&Drop File Uploads for Elgg
 ===============================
+![Elgg 1.8](https://img.shields.io/badge/Elgg-1.8.x-orange.svg?style=flat-square)
+![Elgg 1.9](https://img.shields.io/badge/Elgg-1.9.x-orange.svg?style=flat-square)
+![Elgg 1.10](https://img.shields.io/badge/Elgg-1.10.x-orange.svg?style=flat-square)
+![Elgg 1.11](https://img.shields.io/badge/Elgg-1.11.x-orange.svg?style=flat-square)
 
 Drag&Drop File Uploads for Elgg
 
@@ -9,7 +13,7 @@ Drag&Drop File Uploads for Elgg
 * Fallback to a normal file input
 * Easy to integrate into existing plugins
 
-![alt text](https://raw.github.com/hypeJunction/elgg_dropzone/master/screenshots/dropzone_updated.png "Dropzone")
+![alt text](https://raw.github.com/hypeJunction/dropzone/master/screenshots/dropzone_updated.png "Dropzone")
 
 ## Versioning
 

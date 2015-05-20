@@ -15,13 +15,6 @@ $english = array(
 	'dropzone:server_side_error' => 'Server Error',
 	'dropzone:file_not_entity' => 'File entity could not be created',
 	
-	// Upload errors
-	'upload:success' => 'File was uploaded successfully',
-	'upload:error:no_file' => 'File input was mepty',
-	'upload:error:file_size' => 'Maximum file size was exceeded',
-	'upload:error:unknown' => 'Unknown error has occurred',
-
-
 );
 
 add_translation('en', $english);

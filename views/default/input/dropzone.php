@@ -13,6 +13,14 @@
  * @uses $vars['container_guid'] GUID of the container entity to which new files should be uploaded
  * @uses $vars['subtype'] Subtype of the file to be created
  */
+
+if (\hypeJunction\Integration::isElggVersionAbove('1.9.0')) {
+	elgg_require_js('dropzone/dropzone');
+} else {
+	elgg_load_js('dropzone.min.js');
+	elgg_load_js('dropzone');
+}
+
 $uid = substr(md5(microtime() . rand()), 0, 10);
 $options['id'] = "dropzone-$uid";
 $fallback_input_id = "dropzone-fallback-$uid";
@@ -97,13 +105,13 @@ $dropzone_attributes = elgg_format_attributes($options);
 
 // Add a hidden field to use in the action hook to unserialize the values
 echo elgg_view('input/hidden', array(
-	'name' => 'elgg_dropzone_fields[]',
+	'name' => 'dropzone_fields[]',
 	'value' => $vars['name']
 ));
 
 
 $file_input = elgg_view('input/file', $vars);
-$template = elgg_view('elgg_dropzone/template');
+$template = elgg_view('dropzone/template');
 
 echo <<<HTML
 <div class="elgg-dropzone">
