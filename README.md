@@ -10,8 +10,7 @@ Drag&Drop File Uploads for Elgg
 ## Features
 
 * Cross-browser support for drag&drop file uploads
-* Fallback to a normal file input
-* Easy to integrate into existing plugins
+* Easy to integrate into existing forms
 
 ![Dropzone](https://raw.github.com/hypeJunction/hypeDropzone/master/screenshots/dropzone_updated.png "Dropzone")
 
@@ -28,7 +27,7 @@ echo elgg_view('input/dropzone', array(
 		'max' => 25,
 		'multiple' => true,
 		'container_guid' => $container_guid, // optional file container
-		'subtype' => $subtype, // subtype of the files to be created
+		'subtype' => $subtype, // subtype of the file entities to be created
 		// see the view for more options
 	));
 ```
@@ -38,23 +37,25 @@ In your action, you can retrieve uploaded files with ```get_input('upload_guids'
 You also need to implement a fallback solution for when the browser does not support
 drag and drop.
 
-You can use the UploadHandler class included with hypeFilestore:
+You can use the hypeApps()->uploader:
 
 ```php
 
-namespace hypeJunction\Filestore;
-
 $upload_guids = get_input('upload_guids', array()):
 
-$handler = new UploadHandler;
-$files = $handler->makeFiles('upload_guids', array
+$files = hypeApps()->uploader->handle('upload_guids', array
 			'subtype' => 'file',
 			'container_guid' => get_input('container_guid'),
 			'access_id' => ACCESS_PRIVATE
 		));
 
-foreach ($files as $file) {
-	$upload_guids[] = $file->guid;
+if (!empty($files)) {
+	foreach ($files as $file) {
+		$entity = $upload->file;
+		if ($file instanceof \ElggEntity) {
+			$upload_guids[] = $file->guid;
+		}
+	}
 }
 ```
 
