@@ -1,0 +1,90 @@
+@-webkit-keyframes move { 0% { background-position: 0 0; }
+  100% { background-position: 50px 50px; } }
+[class~="elgg-dropzone"], [class~="elgg-dropzone"] * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+.elgg-dropzone [data-template] { display: none; visibility: hidden; }
+.elgg-dropzone .elgg-input-dropzone { position: relative; min-height: 100px; padding: 1px; border: 1px solid #cccccc; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+.elgg-dropzone .elgg-input-dropzone .elgg-dropzone-instructions { cursor: pointer; font-size: 16px; text-align: center; display: block; padding: 20px; padding-top: 70px; }
+.elgg-dropzone .elgg-input-dropzone .elgg-dropzone-instructions * { text-align: center; }
+.elgg-dropzone .elgg-input-dropzone .elgg-dropzone-instructions strong, .elgg-dropzone .elgg-input-dropzone .elgg-dropzone-instructions span { line-height: 20px; color: #cccccc; }
+.elgg-dropzone .elgg-input-dropzone .elgg-dropzone-instructions:before { cursor: pointer; position: absolute; top: 0; left: 0; right: 0; width: 100%; font-size: 50px; display: inline-block; font-family: FontAwesome; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; content: ""; color: #cccccc; margin: 0 auto; line-height: 50px; padding: 20px 0; z-index: 1; }
+.elgg-dropzone .elgg-dropzone-preview { *zoom: 1; border-bottom: 1px solid #cccccc; display: block; vertical-align: middle; width: 100%; border: 0; padding: 2px; position: relative; padding: 10px 10px 10px 15px; }
+.elgg-dropzone .elgg-dropzone-preview:before, .elgg-dropzone .elgg-dropzone-preview:after { content: " "; display: table; }
+.elgg-dropzone .elgg-dropzone-preview:after { clear: both; }
+.elgg-dropzone-instructions + .elgg-dropzone .elgg-dropzone-preview { border-top: 1px solid #cccccc; margin-top: 10px; }
+.elgg-dropzone .elgg-dropzone-preview:last-child { margin-bottom: 10px; }
+.elgg-dropzone .elgg-dropzone-preview:nth-child(odd) { background: #fafafa; }
+.elgg-dropzone .elgg-dropzone-preview:nth-child(even) { background: #f4f4f4; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-filename { font-size: 12px; text-align: left; line-height: 30px; overflow: hidden; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-size { font-size: 10px; text-align: center; line-height: 30px; overflow: hidden; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-thumbnail { text-align: center; padding: 0; max-height: 30px; overflow: hidden; vertical-align: middle; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-thumbnail img { width: 100%; height: auto; max-width: 30px; line-height: 30px; display: inline-block; }
+@media only screen and (max-width: 40em) { .elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-size, .elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-thumbnail { display: none; }
+  .elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-filename { padding: 0; width: 85%; } }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-progress { position: absolute; bottom: 0; left: 0; width: 90%; height: 4px; border-bottom: 1px solid #fff; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-upload { position: absolute; background-color: #008fb4; background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #008fb4), color-stop(1, #01cbff)); background-image: -moz-linear-gradient(center bottom, #2bc253 37%, #54f054 69%); overflow: hidden; left: 0; top: 0; right: 0; bottom: 0; width: 1%; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-upload:after { content: ""; position: absolute; top: 0; left: 0; bottom: 0; right: 0; height: 100%; background-image: -webkit-gradient(linear, 0 0, 100% 100%, color-stop(0.25, rgba(255, 255, 255, 0.2)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.2)), color-stop(0.75, rgba(255, 255, 255, 0.2)), color-stop(0.75, transparent), to(transparent)); background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent); z-index: 1; -webkit-background-size: 25px 25px; -moz-background-size: 25px 25px; -webkit-animation: move 2s linear infinite; overflow: hidden; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-success-icon { display: inline-block; font-family: FontAwesome; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; display: none; margin: 0 5px; font-size: 16px; line-height: 30px; color: #008fb4; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-success-icon:before { content: ""; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-error-icon { display: inline-block; font-family: FontAwesome; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; display: none; width: 100%; height: 100%; font-size: 16px; line-height: 30px; margin: 0 5px; color: #67080a; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-error-icon:before { content: ""; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-remove-icon { display: inline-block; font-family: FontAwesome; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; width: 100%; height: 100%; margin: 0 5px; font-size: 16px; line-height: 30px; cursor: pointer; color: #67080a; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-remove-icon:before { content: ""; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-remove-icon:hover { text-decoration: none; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-messages { font-size: 10px; color: #008fb4; }
+.elgg-dropzone .elgg-dropzone-preview.elgg-dropzone-success .elgg-dropzone-success-icon { display: inline-block; }
+.elgg-dropzone .elgg-dropzone-preview.elgg-dropzone-success .elgg-dropzone-progress { width: 100%; opacity: 0.5; }
+.elgg-dropzone .elgg-dropzone-preview.elgg-dropzone-success .elgg-dropzone-progress .elgg-dropzone-upload:after { display: none; }
+.elgg-dropzone .elgg-dropzone-preview.elgg-dropzone-error .elgg-dropzone-error-icon { display: inline-block; }
+.elgg-dropzone .elgg-dropzone-preview.elgg-dropzone-error .elgg-dropzone-messages { color: #67080a; }
+.elgg-dropzone .elgg-dropzone-preview.elgg-dropzone-error .elgg-dropzone-progress { width: 100%; opacity: 0.5; }
+.elgg-dropzone .elgg-dropzone-preview.elgg-dropzone-error .elgg-dropzone-progress .elgg-dropzone-upload { background: #67080a; }
+.elgg-dropzone .elgg-dropzone-preview.elgg-dropzone-error .elgg-dropzone-progress .elgg-dropzone-upload:after { display: none; }
+
+.elgg-dropzone-col-1of12 { padding-left: 15px; padding-right: 15px; width: 8.33333%; float: left; margin: 0; }
+.elgg-dropzone-col-1of12:first-child { padding-left: 0; }
+.elgg-dropzone-col-1of12:last-child { padding-right: 0; }
+
+.elgg-dropzone-col-2of12 { padding-left: 15px; padding-right: 15px; width: 16.66667%; float: left; margin: 0; }
+.elgg-dropzone-col-2of12:first-child { padding-left: 0; }
+.elgg-dropzone-col-2of12:last-child { padding-right: 0; }
+
+.elgg-dropzone-col-3of12 { padding-left: 15px; padding-right: 15px; width: 25%; float: left; margin: 0; }
+.elgg-dropzone-col-3of12:first-child { padding-left: 0; }
+.elgg-dropzone-col-3of12:last-child { padding-right: 0; }
+
+.elgg-dropzone-col-4of12 { padding-left: 15px; padding-right: 15px; width: 33.33333%; float: left; margin: 0; }
+.elgg-dropzone-col-4of12:first-child { padding-left: 0; }
+.elgg-dropzone-col-4of12:last-child { padding-right: 0; }
+
+.elgg-dropzone-col-5of12 { padding-left: 15px; padding-right: 15px; width: 41.66667%; float: left; margin: 0; }
+.elgg-dropzone-col-5of12:first-child { padding-left: 0; }
+.elgg-dropzone-col-5of12:last-child { padding-right: 0; }
+
+.elgg-dropzone-col-6of12 { padding-left: 15px; padding-right: 15px; width: 50%; float: left; margin: 0; }
+.elgg-dropzone-col-6of12:first-child { padding-left: 0; }
+.elgg-dropzone-col-6of12:last-child { padding-right: 0; }
+
+.elgg-dropzone-col-7of12 { padding-left: 15px; padding-right: 15px; width: 58.33333%; float: left; margin: 0; }
+.elgg-dropzone-col-7of12:first-child { padding-left: 0; }
+.elgg-dropzone-col-7of12:last-child { padding-right: 0; }
+
+.elgg-dropzone-col-8of12 { padding-left: 15px; padding-right: 15px; width: 66.66667%; float: left; margin: 0; }
+.elgg-dropzone-col-8of12:first-child { padding-left: 0; }
+.elgg-dropzone-col-8of12:last-child { padding-right: 0; }
+
+.elgg-dropzone-col-9of12 { padding-left: 15px; padding-right: 15px; width: 75%; float: left; margin: 0; }
+.elgg-dropzone-col-9of12:first-child { padding-left: 0; }
+.elgg-dropzone-col-9of12:last-child { padding-right: 0; }
+
+.elgg-dropzone-col-10of12 { padding-left: 15px; padding-right: 15px; width: 83.33333%; float: left; margin: 0; }
+.elgg-dropzone-col-10of12:first-child { padding-left: 0; }
+.elgg-dropzone-col-10of12:last-child { padding-right: 0; }
+
+.elgg-dropzone-col-11of12 { padding-left: 15px; padding-right: 15px; width: 91.66667%; float: left; margin: 0; }
+.elgg-dropzone-col-11of12:first-child { padding-left: 0; }
+.elgg-dropzone-col-11of12:last-child { padding-right: 0; }
+
+.elgg-dropzone-col-12of12 { padding-left: 15px; padding-right: 15px; width: 100%; float: left; margin: 0; }
+.elgg-dropzone-col-12of12:first-child { padding-left: 0; }
+.elgg-dropzone-col-12of12:last-child { padding-right: 0; }

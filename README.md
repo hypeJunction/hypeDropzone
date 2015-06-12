@@ -1,20 +1,18 @@
 Drag&Drop File Uploads for Elgg
 ===============================
+![Elgg 1.8](https://img.shields.io/badge/Elgg-1.8.x-orange.svg?style=flat-square)
+![Elgg 1.9](https://img.shields.io/badge/Elgg-1.9.x-orange.svg?style=flat-square)
+![Elgg 1.10](https://img.shields.io/badge/Elgg-1.10.x-orange.svg?style=flat-square)
+![Elgg 1.11](https://img.shields.io/badge/Elgg-1.11.x-orange.svg?style=flat-square)
 
 Drag&Drop File Uploads for Elgg
 
 ## Features
 
 * Cross-browser support for drag&drop file uploads
-* Fallback to a normal file input
-* Easy to integrate into existing plugins
+* Easy to integrate into existing forms
 
-![alt text](https://raw.github.com/hypeJunction/elgg_dropzone/master/screenshots/dropzone_updated.png "Dropzone")
-
-## Versioning
-
-* Master branch is compatible with Elgg 1.9
-* Versions 3.0+ are for Elgg 1.9; anything under is for previous versions of Elgg
+![Dropzone](https://raw.github.com/hypeJunction/hypeDropzone/master/screenshots/dropzone_updated.png "Dropzone")
 
 ## Developer Notes
 
@@ -29,7 +27,7 @@ echo elgg_view('input/dropzone', array(
 		'max' => 25,
 		'multiple' => true,
 		'container_guid' => $container_guid, // optional file container
-		'subtype' => $subtype, // subtype of the files to be created
+		'subtype' => $subtype, // subtype of the file entities to be created
 		// see the view for more options
 	));
 ```
@@ -39,23 +37,25 @@ In your action, you can retrieve uploaded files with ```get_input('upload_guids'
 You also need to implement a fallback solution for when the browser does not support
 drag and drop.
 
-You can use the UploadHandler class included with hypeFilestore:
+You can use the hypeApps()->uploader:
 
 ```php
 
-namespace hypeJunction\Filestore;
-
 $upload_guids = get_input('upload_guids', array()):
 
-$handler = new UploadHandler;
-$files = $handler->makeFiles('upload_guids', array
+$uploads = hypeApps()->uploader->handle('upload_guids', array
 			'subtype' => 'file',
 			'container_guid' => get_input('container_guid'),
 			'access_id' => ACCESS_PRIVATE
 		));
 
-foreach ($files as $file) {
-	$upload_guids[] = $file->guid;
+if (!empty($uploads)) {
+	foreach ($uploads as $upload) {
+		$entity = $upload->file;
+		if ($entity instanceof \ElggEntity) {
+			$upload_guids[] = $entity->guid;
+		}
+	}
 }
 ```
 
@@ -70,7 +70,6 @@ $('.elgg-form').trigger('reset'); // will clear previews and hidden guid inputs
 
 ## Requirements
 
-* hypeFilestore 3.0+ https://github.com/hypeJunction/hypeFilestore
 * For icons to display as expected, install a plugin that provides FontAwesome support, or add FontAwesome to your theme
 
 
