@@ -1,4 +1,4 @@
-define(['elgg', 'jquery', 'dropzone'], function (elgg, $, dropzone) {
+define(['elgg', 'jquery', 'dropzone/lib'], function (elgg, $, dropzone) {
 
 	var dz = {
 		/**

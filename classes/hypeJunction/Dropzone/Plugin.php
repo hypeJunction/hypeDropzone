@@ -41,7 +41,7 @@ final class Plugin extends \hypeJunction\Plugin {
 		elgg_extend_view('css/elgg', 'css/dropzone/stylesheet');
 
 		if (\hypeJunction\Integration::isElggVersionAbove('1.9.0')) {
-			elgg_define_js('dropzone', array(
+			elgg_define_js('dropzone/lib', array(
 				'src' => '/mod/hypeDropzone/vendors/dropzone/dropzone-amd-module.min.js',
 				'deps' => array('jquery'),
 				'exports' => 'dropzone',
