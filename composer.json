@@ -16,12 +16,13 @@
 	"extra": {
 		"installer-name": "hypeDropzone"
 	},
+	"config": {
+		"vendor-dir": "/vendor/"
+	},
 	"require": {
 		"php": ">=5.3.3",
-		"ext-json": "*",
-		"ext-xml": "*",
-		"ext-curl": "*",
-		"composer/installers": "1.*"
+		"composer/installers": "1.*",
+		"hypejunction/hypeapps": "4.*"
 	},
 	"autoload": {
 		"psr-0": {

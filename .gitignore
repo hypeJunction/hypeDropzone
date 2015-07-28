@@ -4,3 +4,5 @@
 robots.txt
 /nbproject/
 /.sass-cache/
+/vendor/
+Gemfile.lock
