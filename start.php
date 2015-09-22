@@ -3,7 +3,7 @@
 /**
  * Drag&Drop File Uploads
  *
- * @author Ismayil Khayredinov <ismayil.khayredinov@gmail.com>
+ * @author Ismayil Khayredinov <info@hypejunction.com>
  * @copyright Copyright (c) 2015, Ismayil Khayredinov
  */
 try {
