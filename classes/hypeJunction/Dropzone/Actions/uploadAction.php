@@ -30,12 +30,8 @@ class uploadAction extends \hypeJunction\Controllers\Action {
 			'container_guid' => $this->container_guid,
 			'access_id' => ACCESS_PRIVATE
 		));
-
-		$this->output = array();
-
-		if (!elgg_is_xhr()) {
-			return;
-		}
+		
+		$output = array();
 
 		foreach ($this->uploads as $upload) {
 
