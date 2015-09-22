@@ -1,16 +1,11 @@
 <?php
 
-if (!is_callable('hypeApps')) {
-	throw new Exception("hypeDropzone requires hypeApps");
+$path = dirname(dirname(__FILE__));
+
+if (file_exists("{$path}/vendor/autoload.php")) {
+	// check if composer dependencies are distributed with the plugin
+	require_once "{$path}/vendor/autoload.php";
 }
-
-$path = dirname(dirname(dirname(dirname(__FILE__))));
-
-if (!file_exists("{$path}/vendor/autoload.php")) {
-	throw new Exception('hypeDropzone can not resolve composer dependencies. Run composer install');
-}
-
-require_once "{$path}/vendor/autoload.php";
 
 /**
  * Plugin container

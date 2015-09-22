@@ -1,5 +1,6 @@
 {
 	"name": "hypejunction/hypedropzone",
+	"version": "4.1.0",
 	"type": "elgg-plugin",
 	"description": "Drag-n-drop file uploads for Elgg",
 	"homepage": "http://hypejunction.com",
@@ -16,11 +17,7 @@
 	"extra": {
 		"installer-name": "hypeDropzone"
 	},
-	"config": {
-		"vendor-dir": "/vendor/"
-	},
-	"require": {
-		"php": ">=5.3.3",
+	"require-dev": {
 		"composer/installers": "1.*",
 		"hypejunction/hypeapps": "4.*"
 	},

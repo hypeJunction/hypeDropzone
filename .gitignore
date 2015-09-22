@@ -4,5 +4,8 @@
 robots.txt
 /nbproject/
 /.sass-cache/
+/node_modules/
+/build/
+/releases/
 /vendor/
-Gemfile.lock
+composer.lock
