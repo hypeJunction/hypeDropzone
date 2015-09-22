@@ -33,7 +33,7 @@ final class Plugin extends \hypeJunction\Plugin {
 
 	public function init() {
 
-		hypeApps()->actions->register('dropzone/upload', \hypeJunction\Dropzone\Actions\uploadAction::CLASSNAME);
+		elgg_register_action('dropzone/upload', $this->plugin->getPath() . 'actions/dropzone/upload.php');
 		
 		/**
 		 * JS, CSS and Views
