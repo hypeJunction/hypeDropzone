@@ -39,6 +39,7 @@ final class Plugin extends \hypeJunction\Plugin {
 		 * JS, CSS and Views
 		 */
 		elgg_extend_view('css/elgg', 'css/dropzone/stylesheet');
+		elgg_extend_view('css/admin', 'css/dropzone/stylesheet');
 
 		if (\hypeJunction\Integration::isElggVersionAbove('1.9.0')) {
 			elgg_define_js('dropzone/lib', array(
