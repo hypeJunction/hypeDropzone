@@ -13,10 +13,7 @@
  * @uses $vars['container_guid'] GUID of the container entity to which new files should be uploaded
  * @uses $vars['subtype'] Subtype of the file to be created
  */
-
-if (\hypeJunction\Integration::isElggVersionAbove('1.9.0')) {
-	elgg_require_js('dropzone/dropzone');
-} else {
+if (\hypeJunction\Integration::isElggVersionBelow('1.9.0')) {
 	elgg_load_js('dropzone.min.js');
 	elgg_load_js('dropzone');
 }
@@ -25,10 +22,6 @@ $uid = substr(md5(microtime() . rand()), 0, 10);
 $options['id'] = "dropzone-$uid";
 $fallback_input_id = "dropzone-fallback-$uid";
 $vars['id'] = $options['data-fallback-id'] = $fallback_input_id;
-
-elgg_load_js('dropzone.js');
-elgg_load_js('elgg.dropzone.js');
-elgg_load_css('elgg.dropzone.css');
 
 // Add dropzone class for JS initialization
 if (isset($vars['class'])) {
@@ -125,3 +118,11 @@ echo <<<HTML
 {$file_input}
 HTML;
 
+if (hypeJunction\Integration::isElggVersionAbove('1.9.0')) {
+	?>
+	<script>
+		require(['dropzone/dropzone']);
+	</script>
+	<?php
+
+}
