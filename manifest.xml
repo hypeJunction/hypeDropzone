@@ -3,7 +3,7 @@
 
 	<name>hypeDropzone</name>
 	<id>hypeDropzone</id>
-	<version type="dist">4.2.2</version>
+	<version type="dist">4.2.3</version>
 
 	<description>Drag and Drop File Uploads</description>
 	<category>files</category>
