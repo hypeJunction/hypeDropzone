@@ -121,7 +121,9 @@ HTML;
 if (hypeJunction\Integration::isElggVersionAbove('1.9.0')) {
 	?>
 	<script>
-		require(['dropzone/dropzone']);
+		require(['dropzone/dropzone'], function(dropzone) {
+			dropzone.init();
+		});
 	</script>
 	<?php
 
