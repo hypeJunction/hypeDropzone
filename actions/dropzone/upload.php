@@ -1,5 +1,7 @@
 <?php
 
+use hypeJunction\DropzoneService;
+
 $svc = new DropzoneService();
 $result = $svc->handleUploads();
 

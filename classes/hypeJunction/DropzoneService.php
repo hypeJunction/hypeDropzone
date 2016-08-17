@@ -20,7 +20,7 @@ class DropzoneService {
 		}
 
 		$uploads = $this->saveUploadedFiles('dropzone', [
-			'owner_guid' => elgg_get_logged_in_user_entity(),
+			'owner_guid' => elgg_get_logged_in_user_guid(),
 			'container_guid' => get_input('container_guid') ? : ELGG_ENTITIES_ANY_VALUE,
 			'subtype' => $subtype,
 			'access_id' => ACCESS_PRIVATE,
@@ -36,13 +36,13 @@ class DropzoneService {
 
 			if ($upload->error) {
 				$messages[] = $upload->error;
-				$success = false;
+				$success = false;$
 				$guid = false;
 			} else {
 				$file = $upload->file;
 				$guid = $file->guid;
 				$html = elgg_view('input/hidden', array(
-					'name' => $this->input_name,
+					'name' => get_input('input_name', 'guids[]'),
 					'value' => $file->guid,
 				));
 			}
