@@ -1,10 +1,10 @@
-<?php if (FALSE) : ?>
-	<script type="text/javascript">
-<?php endif; ?>
-	
-	elgg.provide('elgg.dropzone');
+define(function (require) {
 
-	elgg.dropzone = {
+	var elgg = require('elgg');
+	var $ = require('jquery');
+	require('dropzone/lib');
+
+	var dz = {
 		/**
 		 * Initialize dropzone on DOM ready
 		 * @returns {void}
@@ -14,13 +14,13 @@
 			var init = 'initialize.dropzone init.dropzone ready.dropzone';
 			var reset = 'reset.dropzone clear.dropzone';
 
-			$('.elgg-input-dropzone').die('.dropzone');
+			$(document).off('.dropzone');
 
-			$('.elgg-input-dropzone').live(init, elgg.dropzone.initDropzone);
-			$('.elgg-input-dropzone').live(reset, elgg.dropzone.resetDropzone);
+			$(document).on(init, '.elgg-input-dropzone', dz.initDropzone);
+			$(document).on(reset, '.elgg-input-dropzone', dz.resetDropzone);
 
-			$('form:has(.elgg-input-dropzone)').live(init, elgg.dropzone.initDropzoneForm);
-			$('form:has(.elgg-input-dropzone)').live(reset, elgg.dropzone.resetDropzoneForm);
+			$(document).on(init, 'form:has(.elgg-input-dropzone)', dz.initDropzoneForm);
+			$(document).on(reset, 'form:has(.elgg-input-dropzone)', dz.resetDropzoneForm);
 
 			$('.elgg-input-dropzone').trigger('initialize');
 		},
@@ -50,15 +50,15 @@
 				addRemoveLinks: false,
 				dictRemoveFile: "&times;",
 				previewTemplate: params.dropzone.closest('.elgg-dropzone').find('[data-template]').children()[0].outerHTML,
-				fallback: elgg.dropzone.fallback,
+				fallback: dz.fallback,
 				//autoProcessQueue: false,
 				init: function () {
 					if (this.options.uploadMultiple) {
-						this.on('successmultiple', elgg.dropzone.success);
+						this.on('successmultiple', dz.success);
 					} else {
-						this.on('success', elgg.dropzone.success);
+						this.on('success', dz.success);
 					}
-					this.on('removedfile', elgg.dropzone.removedfile);
+					this.on('removedfile', dz.removedfile);
 				}
 				//forceFallback: true
 			};
@@ -202,5 +202,9 @@
 		}
 	};
 
-	elgg.register_hook_handler('init', 'system', elgg.dropzone.init);
-	elgg.register_hook_handler('config', 'dropzone', elgg.dropzone.config);
+	elgg.register_hook_handler('config', 'dropzone', dz.config);
+
+	dz.init();
+
+	return dz;
+});

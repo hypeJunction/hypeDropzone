@@ -1,17 +1,18 @@
-@-webkit-keyframes move { 0% { background-position: 0 0; }
+@-webkit-keyframes dropzone-move { 0% { background-position: 0 0; }
   100% { background-position: 50px 50px; } }
-[class~="elgg-dropzone"], [class~="elgg-dropzone"] * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+
+[class~="elgg-dropzone"], [class~="elgg-dropzone"] * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
 .elgg-dropzone [data-template] { display: none; visibility: hidden; }
-.elgg-dropzone .elgg-input-dropzone { position: relative; min-height: 100px; padding: 1px; border: 1px solid #cccccc; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; }
+.elgg-dropzone .elgg-input-dropzone { position: relative; min-height: 100px; padding: 1px; border: 1px solid #dddddd; -webkit-border-radius: 5px; -moz-border-radius: 5px; -ms-border-radius: 5px; -o-border-radius: 5px; border-radius: 5px; }
 .elgg-dropzone .elgg-input-dropzone .elgg-dropzone-instructions { cursor: pointer; font-size: 16px; text-align: center; display: block; padding: 20px; padding-top: 70px; }
 .elgg-dropzone .elgg-input-dropzone .elgg-dropzone-instructions * { text-align: center; }
-.elgg-dropzone .elgg-input-dropzone .elgg-dropzone-instructions strong, .elgg-dropzone .elgg-input-dropzone .elgg-dropzone-instructions span { line-height: 20px; color: #cccccc; }
-.elgg-dropzone .elgg-input-dropzone .elgg-dropzone-instructions:before { cursor: pointer; position: absolute; top: 0; left: 0; right: 0; width: 100%; font-size: 50px; display: inline-block; font-family: FontAwesome; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; content: ""; color: #cccccc; margin: 0 auto; line-height: 50px; padding: 20px 0; z-index: 1; }
-.elgg-dropzone .elgg-dropzone-preview { *zoom: 1; border-bottom: 1px solid #cccccc; display: block; vertical-align: middle; width: 100%; border: 0; padding: 2px; position: relative; padding: 10px 10px 10px 15px; }
+.elgg-dropzone .elgg-input-dropzone .elgg-dropzone-instructions strong, .elgg-dropzone .elgg-input-dropzone .elgg-dropzone-instructions span { line-height: 20px; color: #dddddd; }
+.elgg-dropzone .elgg-input-dropzone .elgg-dropzone-instructions:before { cursor: pointer; position: absolute; top: 0; left: 0; right: 0; width: 100%; font-size: 50px; display: inline-block; font-family: 'ambercal'; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; content: "\f0ee"; color: #dddddd; margin: 0 auto; line-height: 50px; padding: 20px 0; z-index: 1; }
+.elgg-dropzone .elgg-dropzone-preview { *zoom: 1; border-bottom: 1px solid #dddddd; display: block; vertical-align: middle; width: 100%; border: 0; padding: 2px; position: relative; padding: 10px 10px 10px 15px; }
 .elgg-dropzone .elgg-dropzone-preview:before, .elgg-dropzone .elgg-dropzone-preview:after { content: " "; display: table; }
 .elgg-dropzone .elgg-dropzone-preview:after { clear: both; }
-.elgg-dropzone-instructions + .elgg-dropzone .elgg-dropzone-preview { border-top: 1px solid #cccccc; margin-top: 10px; }
+.elgg-dropzone-instructions + .elgg-dropzone .elgg-dropzone-preview { border-top: 1px solid #dddddd; margin-top: 10px; }
 .elgg-dropzone .elgg-dropzone-preview:last-child { margin-bottom: 10px; }
 .elgg-dropzone .elgg-dropzone-preview:nth-child(odd) { background: #fafafa; }
 .elgg-dropzone .elgg-dropzone-preview:nth-child(even) { background: #f4f4f4; }
@@ -22,16 +23,16 @@
 @media only screen and (max-width: 40em) { .elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-size, .elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-thumbnail { display: none; }
   .elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-filename { padding: 0; width: 85%; } }
 .elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-progress { position: absolute; bottom: 0; left: 0; width: 90%; height: 4px; border-bottom: 1px solid #fff; }
-.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-upload { position: absolute; background-color: #008fb4; background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #008fb4), color-stop(1, #01cbff)); background-image: -moz-linear-gradient(center bottom, #2bc253 37%, #54f054 69%); overflow: hidden; left: 0; top: 0; right: 0; bottom: 0; width: 1%; }
-.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-upload:after { content: ""; position: absolute; top: 0; left: 0; bottom: 0; right: 0; height: 100%; background-image: -webkit-gradient(linear, 0 0, 100% 100%, color-stop(0.25, rgba(255, 255, 255, 0.2)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.2)), color-stop(0.75, rgba(255, 255, 255, 0.2)), color-stop(0.75, transparent), to(transparent)); background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent); z-index: 1; -webkit-background-size: 25px 25px; -moz-background-size: 25px 25px; -webkit-animation: move 2s linear infinite; overflow: hidden; }
-.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-success-icon { display: inline-block; font-family: FontAwesome; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; display: none; margin: 0 5px; font-size: 16px; line-height: 30px; color: #008fb4; }
-.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-success-icon:before { content: ""; }
-.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-error-icon { display: inline-block; font-family: FontAwesome; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; display: none; width: 100%; height: 100%; font-size: 16px; line-height: 30px; margin: 0 5px; color: #67080a; }
-.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-error-icon:before { content: ""; }
-.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-remove-icon { display: inline-block; font-family: FontAwesome; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; width: 100%; height: 100%; margin: 0 5px; font-size: 16px; line-height: 30px; cursor: pointer; color: #67080a; }
-.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-remove-icon:before { content: ""; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-upload { position: absolute; background-color: #4690d6; background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #4690d6), color-stop(1, #85b6e4)); background-image: -moz-linear-gradient(center bottom, #2bc253 37%, #54f054 69%); overflow: hidden; left: 0; top: 0; right: 0; bottom: 0; width: 1%; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-upload:after { content: ""; position: absolute; top: 0; left: 0; bottom: 0; right: 0; height: 100%; background-image: -webkit-gradient(linear, 0 0, 100% 100%, color-stop(0.25, rgba(255, 255, 255, 0.2)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.2)), color-stop(0.75, rgba(255, 255, 255, 0.2)), color-stop(0.75, transparent), to(transparent)); background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent); z-index: 1; -webkit-background-size: 25px 25px; -moz-background-size: 25px 25px; -webkit-animation: dropzone-move 2s linear infinite; overflow: hidden; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-success-icon { display: inline-block; font-family: 'ambercal'; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; display: none; margin: 0 5px; font-size: 16px; line-height: 30px; color: #4690d6; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-success-icon:before { content: "\f00c"; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-error-icon { display: inline-block; font-family: 'ambercal'; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; display: none; width: 100%; height: 100%; font-size: 16px; line-height: 30px; margin: 0 5px; color: #67080a; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-error-icon:before { content: "\f05e"; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-remove-icon { display: inline-block; font-family: 'ambercal'; font-style: normal; font-weight: normal; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; width: 100%; height: 100%; margin: 0 5px; font-size: 16px; line-height: 30px; cursor: pointer; color: #67080a; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-remove-icon:before { content: "\f00d"; }
 .elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-remove-icon:hover { text-decoration: none; }
-.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-messages { font-size: 10px; color: #008fb4; }
+.elgg-dropzone .elgg-dropzone-preview .elgg-dropzone-messages { font-size: 10px; color: #4690d6; }
 .elgg-dropzone .elgg-dropzone-preview.elgg-dropzone-success .elgg-dropzone-success-icon { display: inline-block; }
 .elgg-dropzone .elgg-dropzone-preview.elgg-dropzone-success .elgg-dropzone-progress { width: 100%; opacity: 0.5; }
 .elgg-dropzone .elgg-dropzone-preview.elgg-dropzone-success .elgg-dropzone-progress .elgg-dropzone-upload:after { display: none; }

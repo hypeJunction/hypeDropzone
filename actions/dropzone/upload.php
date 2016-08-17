@@ -1,7 +1,8 @@
 <?php
 
-$result = hypeApps()->actions->execute(new \hypeJunction\Dropzone\Actions\uploadAction());
+$svc = new DropzoneService();
+$result = $svc->handleUploads();
+
 if (elgg_is_xhr()) {
-	echo $result->output;
+	echo json_encode($result);
 }
-forward($result->getForwardURL());

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Drag and drop file upload input
  *
@@ -13,11 +12,6 @@
  * @uses $vars['container_guid'] GUID of the container entity to which new files should be uploaded
  * @uses $vars['subtype'] Subtype of the file to be created
  */
-if (\hypeJunction\Integration::isElggVersionBelow('1.9.0')) {
-	elgg_load_js('dropzone.min.js');
-	elgg_load_js('dropzone');
-}
-
 $uid = substr(md5(microtime() . rand()), 0, 10);
 $options['id'] = "dropzone-$uid";
 $fallback_input_id = "dropzone-fallback-$uid";
@@ -95,36 +89,25 @@ $language = array(
 $options = array_merge($language, $options);
 
 $dropzone_attributes = elgg_format_attributes($options);
-
-// Add a hidden field to use in the action hook to unserialize the values
-echo elgg_view('input/hidden', array(
-	'name' => 'dropzone_fields[]',
-	'value' => $vars['name']
-));
-
-
-$file_input = elgg_view('input/file', $vars);
-$template = elgg_view('dropzone/template');
-
-echo <<<HTML
+?>
 <div class="elgg-dropzone">
-	<div $dropzone_attributes>
+	<?=
+	// Add a hidden field to use in the action hook to unserialize the values
+	elgg_view('input/hidden', array(
+		'name' => 'dropzone_fields[]',
+		'value' => $vars['name']
+	));
+	?>
+	<div <?= $dropzone_attributes ?>>
 		<span class="elgg-dropzone-instructions dz-default dz-message">
-			{$language['data-dict-default-message']}
+			<?= $language['data-dict-default-message'] ?>
 		</span>
 	</div>
-	<div data-template>$template</div>
+	<div data-template><?= elgg_view('dropzone/template') ?></div>
 </div>
-{$file_input}
-HTML;
-
-if (hypeJunction\Integration::isElggVersionAbove('1.9.0')) {
-	?>
-	<script>
-		require(['dropzone/dropzone'], function(dropzone) {
-			dropzone.init();
-		});
-	</script>
-	<?php
-
-}
+<?= elgg_view('input/file', $vars) ?>
+<script>
+	require(['dropzone/dropzone'], function (dropzone) {
+		dropzone.init();
+	});
+</script>

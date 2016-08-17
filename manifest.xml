@@ -10,17 +10,14 @@
 
 	<author>Ismayil Khayredinov (ismayil.khayredinov@gmail.com)</author>
 	<website>http://hypeJunction.com</website>
-	<copyright>2011-2014 (c) Ismayil Khayredinov</copyright>
+	<copyright>2011-2016 (c) Ismayil Khayredinov</copyright>
 	<license>GNU Public License version 2</license>
 
 	<requires>
 		<type>elgg_release</type>
-		<version>1.8</version>
+		<version>2.2</version>
 	</requires>
-	<requires>
-		<type>plugin</type>
-		<name>hypeApps</name>
-	</requires>
+
 	<provides>
 		<type>plugin</type>
 		<name>dropzone</name>

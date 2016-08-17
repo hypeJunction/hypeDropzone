@@ -1,8 +1,7 @@
 @import "compass/css3"; // compass css3 helpers
-@import "../../../../../sass/global/variables";
-@import "variables";
+@import "../../../sass/global/variables";
 
-@-webkit-keyframes move {
+@-webkit-keyframes dropzone-move {
 	0% {
 		background-position: 0 0;
 	}
@@ -175,7 +174,7 @@
 				z-index: 1;
 				-webkit-background-size: 25px 25px;
 				-moz-background-size: 25px 25px;
-				-webkit-animation: move 2s linear infinite;
+				-webkit-animation: dropzone-move 2s linear infinite;
 				overflow: hidden;
 			}
 		}
