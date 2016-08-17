@@ -9,7 +9,7 @@ Drag&Drop File Uploads for Elgg
 * Cross-browser support for drag&drop file uploads
 * Easy to integrate into existing forms
 
-![Dropzone](https://raw.github.com/hypeJunction/hypeDropzone/master/screenshots/dropzone_updated.png "Dropzone")
+![Dropzone](https://raw.github.com/hypeJunction/hypeDropzone/master/screenshots/dropzone.png "Dropzone")
 
 ## Developer Notes
 
@@ -32,29 +32,7 @@ echo elgg_view('input/dropzone', array(
 In your action, you can retrieve uploaded files with ```get_input('upload_guids');```
 
 You also need to implement a fallback solution for when the browser does not support
-drag and drop.
-
-You can use the hypeApps()->uploader:
-
-```php
-
-$upload_guids = get_input('upload_guids', array()):
-
-$uploads = hypeApps()->uploader->handle('upload_guids', array
-			'subtype' => 'file',
-			'container_guid' => get_input('container_guid'),
-			'access_id' => ACCESS_PRIVATE
-		));
-
-if (!empty($uploads)) {
-	foreach ($uploads as $upload) {
-		$entity = $upload->file;
-		if ($entity instanceof \ElggEntity) {
-			$upload_guids[] = $entity->guid;
-		}
-	}
-}
-```
+drag and drop. Check `hypeJunction\DropzoneService` for an example.
 
 ### Initializing and resetting dropzone
 
@@ -64,11 +42,6 @@ You can instantiate and clear dropzone by triggering jQuery events on the contai
 $('.elgg-form').trigger('initialize'); // will instantiate dropzone inputs contained within the form
 $('.elgg-form').trigger('reset'); // will clear previews and hidden guid inputs
 ```
-
-## Requirements
-
-* For icons to display as expected, install a plugin that provides FontAwesome support, or add FontAwesome to your theme
-
 
 ## Acknowledgements / Credits
 
