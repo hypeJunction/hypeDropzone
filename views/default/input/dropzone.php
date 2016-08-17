@@ -100,6 +100,7 @@ $dropzone_attributes = elgg_format_attributes($options);
 	?>
 	<div <?= $dropzone_attributes ?>>
 		<span class="elgg-dropzone-instructions dz-default dz-message">
+			<?= elgg_view_icon('cloud-upload') ?>
 			<?= $language['data-dict-default-message'] ?>
 		</span>
 	</div>
