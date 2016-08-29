@@ -17,7 +17,7 @@
 	"extra": {
 		"installer-name": "hypeDropzone"
 	},
-	"require-dev": {
+	"require": {
 		"composer/installers": "1.*",
 		"hypejunction/hypeapps": "4.*"
 	},
