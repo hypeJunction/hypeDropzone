@@ -1,3 +1,13 @@
+<a name="5.0.1"></a>
+## [5.0.1](https://github.com/hypeJunction/hypeDropzone/compare/5.0.0...v5.0.1) (2016-08-30)
+
+
+### Bug Fixes
+
+* **composer:** Dependencies are now getting installed correctly ([36f9688](https://github.com/hypeJunction/hypeDropzone/commit/36f9688))
+
+
+
 <a name="5.0.0"></a>
 # [5.0.0](https://github.com/hypeJunction/hypeDropzone/compare/4.2.3...v5.0.0) (2016-08-17)
 
