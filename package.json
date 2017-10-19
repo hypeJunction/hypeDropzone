@@ -1,24 +1,31 @@
 {
-	"name": "hypeDropzone",
-	"version": "5.0.1",
-	"license": "GPL-2.0",
-	"repository": {
-		"type": "git",
-		"url": "git@github.com:hypeJunction/hypeDropzone.git",
-		"owner": "hypeJunction",
-		"repo": "hypeDropzone"
-	},
-	"devDependencies": {
-		"curlrequest": "^0.3.10",
-		"grunt": "^0.4.5",
-		"grunt-composer": "^0.4.4",
-		"grunt-contrib-clean": "^0.6.0",
-		"grunt-contrib-compress": "^0.13.0",
-		"grunt-contrib-copy": "^0.8.0",
-		"grunt-conventional-changelog": "^5.0.0",
-		"grunt-gh-release": "0.0.2",
-		"grunt-git": "^0.3.5",
-		"grunt-version": "^1.0.0",
-		"underscore": "^1.8.3"
-	}
+    "name": "hypeDropzone",
+    "version": "5.0.1",
+    "license": "GPL-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:hypeJunction/hypeDropzone.git",
+        "owner": "hypeJunction",
+        "repo": "hypeDropzone"
+    },
+    "devDependencies": {
+        "cross-env": "^5.1.0",
+        "curlrequest": "^0.3.10",
+        "grunt": "^0.4.5",
+        "grunt-composer": "^0.4.4",
+        "grunt-contrib-clean": "^0.6.0",
+        "grunt-contrib-compress": "^0.13.0",
+        "grunt-contrib-copy": "^0.8.0",
+        "grunt-conventional-changelog": "^5.0.0",
+        "grunt-gh-release": "0.0.2",
+        "grunt-git": "^0.3.5",
+        "grunt-version": "^1.0.0",
+        "laravel-mix": "^1.5.1"
+    },
+    "scripts": {
+        "build": "cross-env NODE_ENV=development webpack --progress --hide-modules && cross-env NODE_ENV=production webpack --progress --hide-modules"
+    },
+    "dependencies": {
+        "vue2-dropzone": "^2.3.6"
+    }
 }

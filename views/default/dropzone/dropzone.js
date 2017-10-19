@@ -35,32 +35,32 @@ define(function (require) {
 		config: function (hook, type, params, config) {
 
 			var defaults = {
-				url: elgg.security.addToken(elgg.get_site_url() + 'action/dropzone/upload'),
-				method: 'POST',
-				headers: {
-					'X-Requested-With': 'XMLHttpRequest'
-				},
-				parallelUploads: 10,
-				paramName: 'dropzone',
-				uploadMultiple: true,
-				createImageThumbnails: true,
-				thumbnailWidth: 200,
-				thumbnailHeight: 200,
-				maxFiles: 10,
-				addRemoveLinks: false,
-				dictRemoveFile: "&times;",
-				previewTemplate: params.dropzone.closest('.elgg-dropzone').find('[data-template]').children()[0].outerHTML,
-				fallback: dz.fallback,
-				//autoProcessQueue: false,
-				init: function () {
-					if (this.options.uploadMultiple) {
-						this.on('successmultiple', dz.success);
-					} else {
-						this.on('success', dz.success);
-					}
-					this.on('removedfile', dz.removedfile);
-				}
-				//forceFallback: true
+                url: elgg.security.addToken(elgg.get_site_url() + 'action/dropzone/upload'),
+                method: 'POST',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                parallelUploads: 10,
+                paramName: 'dropzone',
+                uploadMultiple: true,
+                createImageThumbnails: true,
+                thumbnailWidth: 200,
+                thumbnailHeight: 200,
+                maxFiles: 10,
+                addRemoveLinks: false,
+                dictRemoveFile: "&times;",
+                previewTemplate: params.dropzone.closest('.elgg-dropzone').find('[data-template]').children()[0].outerHTML,
+                fallback: dz.fallback,
+                //autoProcessQueue: false,
+                init: function () {
+                    if (this.options.uploadMultiple) {
+                        this.on('successmultiple', dz.success);
+                    } else {
+                        this.on('success', dz.success);
+                    }
+                    this.on('removedfile', dz.removedfile);
+                }
+                //forceFallback: true
 			};
 
 			return $.extend(true, defaults, config);

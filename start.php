@@ -15,4 +15,6 @@ elgg_register_event_handler('init', 'system', function() {
 	// @see views.php for view locations
 	elgg_extend_view('elgg.css', 'css/dropzone/stylesheet');
 	elgg_extend_view('admin.css', 'css/dropzone/stylesheet');
+
+	elgg_register_simplecache_view('dropzone/template.html');
 });

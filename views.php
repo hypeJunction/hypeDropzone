@@ -12,9 +12,16 @@ if (file_exists("$plugin_root/vendor/autoload.php")) {
 	$path = $alt_root;
 }
 
+if (elgg_get_config('environment') !== 'development') {
+	$env = 'prod';
+} else {
+	$env = 'dev';
+}
+
 return [
 	'default' => [
 		'dropzone/lib.js' => $path . '/vendor/bower-asset/dropzone/dist/min/dropzone-amd-module.min.js',
 		'css/dropzone/stylesheet' => __DIR__ . '/views/default/dropzone/dropzone.css',
+		'/' => __DIR__ . "/assets/$env/",
 	],
 ];

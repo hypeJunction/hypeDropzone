@@ -1,0 +1,35 @@
+<elgg-field :class="fieldClass">
+    <label slot="label"
+           v-if="label"
+           :for="id"
+           class="label elgg-field-label"
+    >
+        {{ label }}
+        <span v-if="required" title="echo('field:required')" class="elgg-required-indicator">*</span>
+    </label>
+
+    <div class="control">
+        <div class="elgg-dropzone">
+            <input v-if="name" v-for="file in inputValue" :name="name + '[]'" :value="file.guid" type="hidden "/>
+
+            <vue-dropzone
+                    v-bind="dropzoneProps"
+                    @vdropzone-success="onSuccess"
+                    @vdropzone-removed-file="onRemovedFile"
+            >
+                <span class="elgg-dropzone-instructions dz-default dz-message">
+                    <elgg-icon name="cloud-upload"></elgg-icon>
+                    <span v-html="dropzoneProps.language.dictDefaultMessage"></span>
+                </span>
+            </vue-dropzone>
+        </div>
+    </div>
+
+    <div slot="help"
+         v-if="help"
+         class="help elgg-field-help elgg-text-help"
+    >
+        {{ help }}
+    </div>
+
+</elgg-field>
